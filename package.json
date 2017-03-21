@@ -27,11 +27,13 @@
     "reactify": "^1.1",
     "style-loader": "^0.15.0",
     "watchify": "~3.7.0",
-    "webpack": "^2.2.1"
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.2"
   },
   "scripts": {
     "start": "watchify -o js/bundle.js -v -d .",
-    "watch": "webpack ./js/app.js ./js/bundle.js --watch --display-error-details",
+    "start-dev": "webpack-dev-server --inline --hot --output-public-path=/js/",
+    "watch": "webpack --watch --display-error-details",
     "build": "browserify . | uglifyjs -cm > js/bundle.min.js",
     "test": "jest"
   },
