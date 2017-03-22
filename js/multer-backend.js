@@ -5,18 +5,12 @@ module.exports = (app) => {
     filename: function (req, file, cb) {
       // Mimetype stores the file type, set extensions according to filetype
       switch (file.mimetype) {
-        case 'image/jpeg':
-          ext = '.jpeg';
-          break;
-        case 'image/png':
-          ext = '.png';
-          break;
-        case 'image/gif':
-          ext = '.gif';
+        case 'text/csv':
+          ext = '.csv';
           break;
       }
 
-      cb(null, file.originalname.slice(0, 4) + Date.now() + ext);
+      cb(null, file.originalname);
     }
   });
   const upload = multer({storage: storage});
