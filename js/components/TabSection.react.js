@@ -11,7 +11,9 @@ import { Grid, Row, Col } from 'react-flexbox-grid';
 import Tabs, { TabPane } from 'rc-tabs';
 import TabContent from 'rc-tabs/lib/SwipeableTabContent';
 import ScrollableInkTabBar from 'rc-tabs/lib/ScrollableInkTabBar';
-var Dropzone = require('dropzone');
+
+import FileUploadComponent from './FileUpload.react.js';
+import FileListComponent from './FileList.react.js'
 
 //var UploadSectionComponent = require('./UploadSection.react.js');
 
@@ -19,25 +21,6 @@ import '../../node_modules/primer-css/build/build.css';
 
 // Key of the default tab, Configuration
 const defaultTabKey = '1';
-
-class UploadButton extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  componentDidMount() {
-    var _dropzone = new Dropzone("button#upload-button", {
-      url: "http://localhost:3000/upload",
-      previewTemplate: '<div style="display:none"></div>',
-    });
-
-    _dropzone.on('complete', function(file) {_dropzone.removeFile(file)});
-  }
-
-  render() {
-    return <button className="btn btn-block btn-outline" id="upload-button" type="button">Dataset</button>;
-  }
-}
 
 const TabSectionComponent = React.createClass({
   getInitialState() {
@@ -76,7 +59,8 @@ const TabSectionComponent = React.createClass({
               <Col xs={12} sm={12} md={3} style={{'marginTop': '30px'}}>
                 <Row center="xs">
                   <Col xs={12}>
-                    <UploadButton />
+                    <FileUploadComponent />
+                    <FileListComponent />
                   </Col>
                 </Row>
               </Col>
