@@ -11,6 +11,7 @@ class FileUploadComponent extends React.Component {
     var _dropzone = new Dropzone("button#upload-button", {
       url: "http://localhost:3000/upload",
       previewTemplate: '<div style="display:none"></div>',
+      acceptedFiles: 'text/csv'
     });
 
     _dropzone.on('complete', function(file) {_dropzone.removeFile(file)});

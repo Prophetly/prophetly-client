@@ -1,10 +1,7 @@
 var React = require('react');
 var ReactDOMServer = require('react-dom/server');
 
-/*
-react-grid-layout
-=================
-*/
+
 import { Grid, Row, Col } from 'react-flexbox-grid';
 
 // rc-tabs
@@ -12,11 +9,11 @@ import Tabs, { TabPane } from 'rc-tabs';
 import TabContent from 'rc-tabs/lib/SwipeableTabContent';
 import ScrollableInkTabBar from 'rc-tabs/lib/ScrollableInkTabBar';
 
+// app components
 import FileUploadComponent from './FileUpload.react.js';
 import FileListComponent from './FileList.react.js'
 
-//var UploadSectionComponent = require('./UploadSection.react.js');
-
+// primer-css
 import '../../node_modules/primer-css/build/build.css';
 
 // Key of the default tab, Configuration
@@ -25,25 +22,22 @@ const defaultTabKey = '1';
 const TabSectionComponent = React.createClass({
   getInitialState() {
     return {
-      start: 0,
       tabKey: defaultTabKey,
     };
   },
 
   onChange(key) {
-    console.log(`onChange ${key}`);
+    //console.log(`onChange ${key}`);
   },
 
   onTabClick(key) {
-    console.log(`onTabClick ${key}`);
+    //console.log(`onTabClick ${key}`);
     this.setState({
       tabKey: key,
     });
   },
 
   render() {
-    const start = this.state.start;
-    const disabled = true;
     return (<div>
       <h1>Prophetly</h1>
 
@@ -64,8 +58,11 @@ const TabSectionComponent = React.createClass({
                   </Col>
                 </Row>
               </Col>
-              <Col xs={6} md={3} style={{'marginTop': '30px'}}>
-                Go?
+              <Col xs={12} sm={12} md={9} style={{'marginTop': '30px'}}>
+                <div className="blankslate blankslate-spacious">
+                  <h3>Your model plots</h3>
+                  <p>Start with a dataset to forecast</p>
+                </div>
               </Col>
             </Row>
           </Grid>

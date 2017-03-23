@@ -4,6 +4,7 @@
   "description": "Prophetly front-end powered by React",
   "main": "js/app.js",
   "dependencies": {
+    "axios": "^0.15.3",
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "flux": "^2.0.0",

@@ -59,6 +59,7 @@ var express     = require('express'),
     path        = require('path'),
     multer      = require('multer'),
     bodyParser  = require('body-parser'),
+    fs          = require('fs'),
     MulterImpl  = require('./multer-backend'),
     app         = express();
 
@@ -66,7 +67,7 @@ app.set('port', process.env.PORT || 3000);
 //app.use(express.static('../'));
 
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://localhost:8080");
+  res.header("Access-Control-Allow-Origin", "http://127.0.0.1:8080");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Cache-Control");
   //res.header("Access-Control-Allow-Headers", "Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
   res.header("Access-Control-Allow-Credentials", "true");
@@ -76,6 +77,16 @@ app.use(function(req, res, next) {
 
 //Call the multerImpl and pass in app state to it
 require('./multer-backend')(app);
+
+app.get('/upload', function(req, res) {
+  fs.readdir(process.cwd() + '/uploads/', (err, files) => {
+    if (err) {
+      res.json({'status': 500});
+    }
+    
+    res.json({'files': files});
+  });
+});
 
 module.exports = app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
