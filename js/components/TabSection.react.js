@@ -1,65 +1,43 @@
 var React = require('react');
 var ReactDOMServer = require('react-dom/server');
 
+/*
+react-grid-layout
+=================
+*/
+import { Grid, Row, Col } from 'react-flexbox-grid';
+
 // rc-tabs
 import Tabs, { TabPane } from 'rc-tabs';
 import TabContent from 'rc-tabs/lib/SwipeableTabContent';
 import ScrollableInkTabBar from 'rc-tabs/lib/ScrollableInkTabBar';
+var Dropzone = require('dropzone');
 
 //var UploadSectionComponent = require('./UploadSection.react.js');
 
-import DropzoneComponent from 'react-dropzone-component';
-import '../../node_modules/react-dropzone-component/styles/filepicker.css';
-import '../../node_modules/dropzone/dist/min/dropzone.min.css';
-
-var componentConfig = {
-  iconFiletypes: ['.csv'],
-  showFiletypeIcon: false,
-  postUrl: 'http://localhost:3000/upload',
-};
-
-var djsConfig = {
-  dictDefaultMessage: 'Upload dataset file here',
-  addRemoveLinks: false,
-  maxFiles: 1,
-  previewTemplate: ReactDOMServer.renderToStaticMarkup(
-    <span></span>
-  ),
-}
-
-var _dropzone;
-var eventHandlers = {
-  init: function(dz) {_dropzone = dz;},
-  complete: function(file) {_dropzone.removeFile(file);}
-};
-
+import '../../node_modules/primer-css/build/build.css';
 
 // Key of the default tab, Configuration
 const defaultTabKey = '1';
 
-class PanelContent extends React.Component {
+class UploadButton extends React.Component {
   constructor(props) {
     super(props);
-    console.log(this.props.id, 'constructor');
   }
 
-  componentWillReceiveProps() {
-    console.log(this.props.id, 'componentWillReceiveProps');
+  componentDidMount() {
+    var _dropzone = new Dropzone("button#upload-button", {
+      url: "http://localhost:3000/upload",
+      previewTemplate: '<div style="display:none"></div>',
+    });
+
+    _dropzone.on('complete', function(file) {_dropzone.removeFile(file)});
   }
 
   render() {
-    const count = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1];// new Array(4) skip forEach ....
-    const els = count.map((c, i) => {
-      return (<p key={i}>
-        <button>{this.props.id}</button>
-      </p>);
-    });
-    return <div style={{ height: 200, overflow: 'auto' }}>{els}</div>;
+    return <button className="btn btn-block btn-outline" id="upload-button" type="button">Dataset</button>;
   }
 }
-PanelContent.propTypes = {
-  id: React.PropTypes.number,
-};
 
 const TabSectionComponent = React.createClass({
   getInitialState() {
@@ -93,14 +71,32 @@ const TabSectionComponent = React.createClass({
         onChange={this.onChange}
       >
         <TabPane tab={`Configuration`} key="1">
-          <DropzoneComponent config={componentConfig}
-                       eventHandlers={eventHandlers}
-                       djsConfig={djsConfig} />
+          <Grid fluid>
+            <Row>
+              <Col xs={12} sm={12} md={3} style={{'marginTop': '30px'}}>
+                <Row center="xs">
+                  <Col xs={12}>
+                    <UploadButton />
+                  </Col>
+                </Row>
+              </Col>
+              <Col xs={6} md={3} style={{'marginTop': '30px'}}>
+                Go?
+              </Col>
+            </Row>
+          </Grid>
         </TabPane>
         <TabPane tab={`Dashboard`} key="2">
-          <DropzoneComponent config={componentConfig}
-                       eventHandlers={eventHandlers}
-                       djsConfig={djsConfig} />
+          <Grid fluid>
+            <Row>
+              <Col xs={6} md={3}>
+                Hello, world!
+              </Col>
+              <Col xs={6} md={3}>
+                How are you?
+              </Col>
+            </Row>
+          </Grid>
         </TabPane>
       </Tabs>
     </div>);
