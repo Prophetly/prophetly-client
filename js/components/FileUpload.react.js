@@ -1,20 +1,39 @@
 var React = require('react');
 var Dropzone = require('dropzone');
 
+import AppActions from '../actions/AppActions';
+
 
 class FileUploadComponent extends React.Component {
   constructor(props) {
     super(props);
   }
 
+  actionUploadFile(fileName, isError) {
+    AppActions.uploadFile(fileName, isError);
+  }
+
   componentDidMount() {
+    // component scope
+    var _this = this;
+
+    // create a new Dropzone instance on the 'upload button'
     var _dropzone = new Dropzone("button#upload-button", {
       url: "http://localhost:3000/upload",
       previewTemplate: '<div style="display:none"></div>',
       acceptedFiles: 'text/csv'
     });
 
-    _dropzone.on('complete', function(file) {_dropzone.removeFile(file)});
+    // upload successful
+    _dropzone.on('complete', function(file) {
+      _dropzone.removeFile(file);
+
+      _this.actionUploadFile(file.name, false);
+    });
+
+    // upload failed
+    // TODO: check is 'file.name' available in case of 'error'
+    //_dropzone.on('error', errorMessage);
   }
 
   render() {
