@@ -8,49 +8,37 @@ class FileListComponent extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      files: []
-    };
+    //this.state = props.fileList;
 
-    this._onChange = this._onChange.bind(this);
+    //this._onChange = this._onChange.bind(this);
   }
 
+  /*
   _onChange() {
-    this.setState({
-      files: FileListStore.getAll()
-    });
+    this.setState(FileListStore.getState());
   }
+  */
 
+  /*
   componentDidMount() {
     var _this = this;
 
-    FileListStore.addChangeListener(_this._onChange);
-
-    /*
-    this.serverRequest =
-      axios
-        .get("http://localhost:3000/upload")
-        .then(function(result) {
-          _this.setState({
-            files: result.data.files
-          });
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    */
+    FileListStore.addListener(_this._onChange);
   }
+  */
 
   render() {
+    console.log('rendering', this.props.fileList.get('files'));
+
     var fileList = null;
-    if (this.state.files.length == 0) {
+    if (this.props.fileList.get('files').size == 0) {
       fileList = (<a className="menu-item" href="#">
           <span className="branch-ref css-truncate css-truncate-target">
             Upload dataset to get started
           </span>
         </a>)
     } else {
-      fileList = this.state.files.map((file) => (
+      fileList = this.props.fileList.get('files').map((file) => (
         <a key={file} className="menu-item" href="#">
           <span className="branch-ref css-truncate css-truncate-target">
             {file}

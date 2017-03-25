@@ -11,7 +11,8 @@ import ScrollableInkTabBar from 'rc-tabs/lib/ScrollableInkTabBar';
 
 // app components
 import FileUploadComponent from './FileUpload.react.js';
-import FileListComponent from './FileList.react.js'
+//import FileListComponent from './FileList.react.js'
+import FileListContainer from '../containers/FileListContainer';
 
 // primer-css
 import '../../node_modules/primer-css/build/build.css';
@@ -54,7 +55,7 @@ const TabSectionComponent = React.createClass({
                 <Row center="xs">
                   <Col xs={12}>
                     <FileUploadComponent />
-                    <FileListComponent />
+                    <FileListContainer />
                   </Col>
                 </Row>
               </Col>
