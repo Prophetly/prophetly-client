@@ -90,5 +90,4 @@ app.get('/upload', function(req, res) {
 
 module.exports = app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
-  console.log('Visit http://localhost:' + app.get('port') + '/example/ to check out the upload example');
 });

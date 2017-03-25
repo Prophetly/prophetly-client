@@ -8,20 +8,27 @@ const Actions = {
     if (isError) {
       Dispatcher.dispatch({
         type: ActionTypes.UPLOAD_FILE_ERROR,
-        data: {name: fileName},
+        data: {fileName: fileName},
       });
     } else {
       Dispatcher.dispatch({
         type: ActionTypes.UPLOAD_FILE_SUCCESS,
-        data: {name: fileName},
+        data: {fileName: fileName},
       });
     }
   },
 
-  fetchFiles(files) {
+  setFileList(files) {
     Dispatcher.dispatch({
       type: ActionTypes.SET_FILE_LIST,
       data: {files: files},
+    });
+  },
+
+  selectFile(file) {
+    Dispatcher.dispatch({
+      type: ActionTypes.SELECT_FILE,
+      data: {fileName: file},
     });
   },
 };

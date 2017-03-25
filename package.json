@@ -19,6 +19,7 @@
     "react-flexbox-grid": "^1.0.2",
     "react-grid-layout": "^0.14.4",
     "react-progress-button": "^5.0.2",
+    "react-router": "^2.0.0",
     "uglifyjs": "^2.4.10",
     "underscore": "^1.8.3"
   },

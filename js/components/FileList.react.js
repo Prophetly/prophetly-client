@@ -13,10 +13,14 @@ class FileListComponent extends React.Component {
   }
 
   actionSetFileList(files) {
-    AppActions.fetchFiles(files);
+    AppActions.setFileList(files);
   }
 
-  componentWillMount() {
+  actionSelectFile(file) {
+    AppActions.selectFile(file);
+  }
+
+  componentDidMount() {
     var _this = this;
 
     Axios.get('http://localhost:3000/upload')
@@ -29,8 +33,9 @@ class FileListComponent extends React.Component {
   }
 
   render() {
-    const _files = this.props.fileList.get('files');
     let fileList;
+    const _files = this.props.files;
+    const _selectedFile = this.props.selectedFile;
 
     if (_files.size == 0) {
       fileList = (<span className="menu-item">
@@ -38,7 +43,10 @@ class FileListComponent extends React.Component {
           </span>)
     } else {
       fileList = _files.map((file) => (
-        <a key={file} className="menu-item" href="#">
+        <a key={file}
+          className={`menu-item${_selectedFile === file ? ' selected' : ''}`}
+          href={`/#/file/${file}`}
+          onClick={() => this.actionSelectFile(file)}>
           <span className="branch-ref css-truncate css-truncate-target">
             {file}
           </span>
