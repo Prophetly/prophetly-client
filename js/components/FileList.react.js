@@ -4,11 +4,28 @@ import React from 'react';
 import Axios from 'axios';
 
 import FileListStore from '../stores/FileListStore';
+import AppActions from '../actions/AppActions';
 
 
 class FileListComponent extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  actionSetFileList(files) {
+    AppActions.fetchFiles(files);
+  }
+
+  componentWillMount() {
+    var _this = this;
+
+    Axios.get('http://localhost:3000/upload')
+      .then(function (response) {
+        _this.actionSetFileList(response.data.files);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   render() {

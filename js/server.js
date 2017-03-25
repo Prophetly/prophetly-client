@@ -67,7 +67,7 @@ app.set('port', process.env.PORT || 3000);
 //app.use(express.static('../'));
 
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://127.0.0.1:8080");
+  res.header("Access-Control-Allow-Origin", "http://localhost:8080");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Cache-Control");
   //res.header("Access-Control-Allow-Headers", "Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
   res.header("Access-Control-Allow-Credentials", "true");
@@ -83,7 +83,7 @@ app.get('/upload', function(req, res) {
     if (err) {
       res.json({'status': 500});
     }
-    
+
     res.json({'files': files});
   });
 });

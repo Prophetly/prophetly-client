@@ -19,7 +19,6 @@ class FileListContainer extends Component {
   }
 
   render() {
-    console.log('rendering in container');
     return <FileListComponent fileList={this.state.fileList} />;
   }
 }
