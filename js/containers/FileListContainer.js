@@ -1,8 +1,11 @@
+'use strict';
+
 import React, {Component} from 'react';
 import {Container} from 'flux/utils';
 
 import FileListStore from '../stores/FileListStore';
 import FileListComponent from '../components/FileList.react.js';
+
 
 class FileListContainer extends Component {
   static getStores() {

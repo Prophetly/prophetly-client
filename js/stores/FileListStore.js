@@ -1,5 +1,6 @@
-import {ReduceStore} from 'flux/utils';
+'use strict';
 
+import {ReduceStore} from 'flux/utils';
 import {Map} from 'immutable';
 import {List} from 'immutable';
 
@@ -27,50 +28,3 @@ class FileListStore extends ReduceStore {
 }
 
 export default new FileListStore(AppDispatcher);
-
-/*
-var AppDispatcher = require('../dispatcher/AppDispatcher');
-var EventEmitter = require('events').EventEmitter;
-var assign = require('object-assign');
-var axios = require('axios');
-
-import ActionTypes from '../actions/AppActionTypes';
-
-var CHANGE_EVENT = 'change';
-
-var _files = [];
-
-//var _selected = -1;
-
-var FileListStore = assign({}, EventEmitter.prototype, {
-  emitChange: function() {
-    console.log('emitting change FileListStore');
-    this.emit(CHANGE_EVENT);
-  },
-
-  addChangeListener: function(callback) {
-    this.on(CHANGE_EVENT, callback);
-  },
-
-  getAll: function() {
-    return _files;
-  },
-});
-
-FileListStore.dispatchToken = AppDispatcher.register(function(payload) {
-  switch(payload.type) {
-
-    case ActionTypes.UPLOAD_FILE_SUCCESS:
-      _files.push(payload.data.name);
-      FileListStore.emitChange();
-
-      break;
-
-    default:
-      // don't do nothing
-  }
-
-});
-
-module.exports = FileListStore;
-*/
