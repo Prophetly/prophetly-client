@@ -4,6 +4,10 @@ import { TabPane } from 'rc-tabs';
 
 import FileUploadComponent from './FileUpload.react.js';
 import FileListContainer from '../containers/FileListContainer';
+import ControlPanelContainer from '../containers/ControlPanelContainer';
+
+// dropdown style
+import '../../node_modules/react-dropdown/style.css';
 
 
 class ConfigurationComponent extends React.Component {
@@ -23,10 +27,15 @@ class ConfigurationComponent extends React.Component {
             </Row>
           </Col>
           <Col xs={12} sm={12} md={9} style={{'marginTop': '30px'}}>
-            <div className="blankslate blankslate-spacious">
-              <h3>Your model plots</h3>
-              <p>Start with a dataset to forecast</p>
-            </div>
+            <ControlPanelContainer />
+            <Row center="xs">
+              <Col xs={12}>
+                <div className="blankslate blankslate-spacious">
+                  <h3>Your model plots</h3>
+                  <p>Start with a dataset to forecast</p>
+                </div>
+              </Col>
+            </Row>
           </Col>
         </Row>
       </Grid>);

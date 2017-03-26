@@ -16,8 +16,24 @@ class FileListComponent extends React.Component {
     AppActions.setFileList(files);
   }
 
+  actionSetColumns(file, columns) {
+    console.log('actionSetColumns call', file, columns);
+    AppActions.setColumns(file, columns);
+  }
+
   actionSelectFile(file) {
     AppActions.selectFile(file);
+
+    // collect columns for the selected file and update the dropdown
+    var _this = this;
+
+    Axios.get('http://localhost:3000/column')
+      .then(function (response) {
+        _this.actionSetColumns(file, response.data.columns);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   componentDidMount() {

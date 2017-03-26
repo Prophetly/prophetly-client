@@ -31,6 +31,13 @@ const Actions = {
       data: {fileName: file},
     });
   },
+
+  setColumns(file, columns) {
+    Dispatcher.dispatch({
+      type: ActionTypes.SET_COLUMNS,
+      data: {fileName: file, columns: columns},
+    });
+  },
 };
 
 export default Actions;

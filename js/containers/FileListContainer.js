@@ -19,7 +19,6 @@ class FileListContainer extends Component {
   }
 
   render() {
-    console.log(this.state.fileList.get('selectedFile'));
     return <FileListComponent files={this.state.fileList.get('files')}
             selectedFile={this.state.fileList.get('selectedFile')} />;
   }

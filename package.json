@@ -16,10 +16,12 @@
     "rc-tabs": "^7.3.1",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
+    "react-dropdown": "^1.2.1",
     "react-flexbox-grid": "^1.0.2",
     "react-grid-layout": "^0.14.4",
     "react-progress-button": "^5.0.2",
     "react-router": "^2.0.0",
+    "react-select": "^1.0.0-rc.3",
     "uglifyjs": "^2.4.10",
     "underscore": "^1.8.3"
   },

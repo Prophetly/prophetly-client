@@ -78,6 +78,7 @@ app.use(function(req, res, next) {
 //Call the multerImpl and pass in app state to it
 require('./multer-backend')(app);
 
+// get the list of files in 'uploads' directory
 app.get('/upload', function(req, res) {
   fs.readdir(process.cwd() + '/uploads/', (err, files) => {
     if (err) {
@@ -86,6 +87,11 @@ app.get('/upload', function(req, res) {
 
     res.json({'files': files});
   });
+});
+
+// get the columns in a dataset file (.csv)
+app.get('/column', function(req, res) {
+  res.json({'columns': [{value: 'a', label: 'A'}, {value: 'b', label: 'B'}]});
 });
 
 module.exports = app.listen(app.get('port'), function() {
