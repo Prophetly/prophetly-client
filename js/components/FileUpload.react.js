@@ -16,7 +16,6 @@ class FileUploadComponent extends React.Component {
   }
 
   componentDidMount() {
-    // component scope
     var _this = this;
 
     // create a new Dropzone instance on the 'upload button'
@@ -27,15 +26,16 @@ class FileUploadComponent extends React.Component {
     });
 
     // upload successful
-    _dropzone.on('complete', function(file) {
+    _dropzone.on('success', function(file) {
       _dropzone.removeFile(file);
 
       _this.actionUploadFile(file.name, false);
     });
 
     // upload failed
-    // TODO: check is 'file.name' available in case of 'error'
-    //_dropzone.on('error', errorMessage);
+    _dropzone.on('error', function(file, errorMessage, xhr) {
+      console.log(file.name, xhr.status, xhr.statusText);
+    });
   }
 
   render() {
