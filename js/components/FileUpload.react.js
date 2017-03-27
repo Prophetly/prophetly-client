@@ -3,6 +3,8 @@ var Dropzone = require('dropzone');
 
 import AppActions from '../actions/AppActions';
 
+//import '../../node_modules/octicons/build/octicons.css';
+
 
 class FileUploadComponent extends React.Component {
   constructor(props) {
@@ -19,7 +21,7 @@ class FileUploadComponent extends React.Component {
 
     // create a new Dropzone instance on the 'upload button'
     var _dropzone = new Dropzone("button#upload-button", {
-      url: "http://localhost:3000/upload",
+      url: "http://localhost:8888/upload",
       previewTemplate: '<div style="display:none"></div>',
       acceptedFiles: 'text/csv'
     });
@@ -41,7 +43,7 @@ class FileUploadComponent extends React.Component {
                    className="btn btn-block"
                    id="upload-button"
                    type="button">
-                    Upload
+                     Upload
                   </button>;
   }
 }

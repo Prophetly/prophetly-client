@@ -3,7 +3,6 @@ var express     = require('express'),
     multer      = require('multer'),
     bodyParser  = require('body-parser'),
     fs          = require('fs'),
-    MulterImpl  = require('./multer-backend'),
     app         = express();
 
 app.set('port', process.env.PORT || 3000);
@@ -45,6 +44,7 @@ app.get('/upload', function(req, res) {
 
 // get the columns in a dataset file (.csv)
 app.get('/column', function(req, res) {
+  //{"columns": [{"value": "ds", "label": "ds"}, {"value": "y", "label": "y"}]}
   res.json({'columns': [{value: 'a', label: 'A'}, {value: 'b', label: 'B'}]});
 });
 

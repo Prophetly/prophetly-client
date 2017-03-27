@@ -22,7 +22,7 @@ class ControlPanelComponent extends React.Component {
 			<Select
 				name="form-field-name"
 				options={this.props.columns}
-				placeholder="ds column"
+				placeholder="datestamp column"
 				onChange={this.logChange}
 				clearable={false}
 			/>

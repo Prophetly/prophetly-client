@@ -27,7 +27,7 @@ class FileListComponent extends React.Component {
     // collect columns for the selected file and update the dropdown
     var _this = this;
 
-    Axios.get('http://localhost:3000/column')
+    Axios.get('http://localhost:8888/column/' + file)
       .then(function (response) {
         _this.actionSetColumns(file, response.data.columns);
       })
@@ -39,7 +39,7 @@ class FileListComponent extends React.Component {
   componentDidMount() {
     var _this = this;
 
-    Axios.get('http://localhost:3000/upload')
+    Axios.get('http://localhost:8888/upload')
       .then(function (response) {
         _this.actionSetFileList(response.data.files);
       })
