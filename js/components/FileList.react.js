@@ -3,7 +3,6 @@
 import React from 'react';
 import Axios from 'axios';
 
-import FileListStore from '../stores/FileListStore';
 import AppActions from '../actions/AppActions';
 
 
@@ -17,7 +16,6 @@ class FileListComponent extends React.Component {
   }
 
   actionSetColumns(file, columns) {
-    console.log('actionSetColumns call', file, columns);
     AppActions.setColumns(file, columns);
   }
 

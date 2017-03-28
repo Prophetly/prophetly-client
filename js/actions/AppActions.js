@@ -38,6 +38,13 @@ const Actions = {
       data: {fileName: file, columns: columns},
     });
   },
+
+  updateColumnValue(column_id, column_value) {
+    Dispatcher.dispatch({
+      type: ActionTypes.UPDATE_COLUMN_VALUE,
+      data: {column_id: column_id, column_value: column_value},
+    });
+  },
 };
 
 export default Actions;

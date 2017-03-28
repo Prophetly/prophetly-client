@@ -12,27 +12,39 @@ class ControlPanelComponent extends React.Component {
     super(props);
   }
 
-  logChange() {
-    //
+  actionUpdateColumnValue(column_id, column_value) {
+    AppActions.updateColumnValue(column_id, column_value);
+  }
+
+  // closure based solution to the issue 1458 in the repo 'react-select'
+  // https://github.com/JedWatson/react-select/issues/1458
+  _createChangeHandler(name) {
+    const onChange = (newValue) => this.actionUpdateColumnValue(name, newValue);
+    return onChange;
   }
 
   render() {
+    // to handle multiple sourced 'onChange' events
+    const onChange = (name) => this._createChangeHandler(name);
+
     return (<Row start="xs">
       <Col xs={3}>
 			<Select
-				name="form-field-name"
+				name="datestamp-column"
 				options={this.props.columns}
 				placeholder="datestamp column"
-				onChange={this.logChange}
+				onChange={onChange("datestamp-column")}
+        value={this.props.columnValues["datestamp-column"]}
 				clearable={false}
 			/>
       </Col>
       <Col xs={3}>
       <Select
-        name="form-field-name"
+        name="y-column"
         options={this.props.columns}
         placeholder="y column"
-        onChange={this.logChange}
+        onChange={onChange("y-column")}
+        value={this.props.columnValues["y-column"]}
         clearable={false}
       />
       </Col>

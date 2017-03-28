@@ -7,6 +7,7 @@ const ActionTypes = {
   SELECT_FILE: 'SELECT_FILE',
 
   SET_COLUMNS: 'SET_COLUMNS',
+  UPDATE_COLUMN_VALUE: 'UPDATE_COLUMN_VALUE',
 };
 
 export default ActionTypes;

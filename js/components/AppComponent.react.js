@@ -6,6 +6,8 @@ import TabContent from 'rc-tabs/lib/SwipeableTabContent';
 import { TabPane } from 'rc-tabs';
 import ScrollableInkTabBar from 'rc-tabs/lib/ScrollableInkTabBar';
 
+//import { AlertList } from "react-bs-notifier";
+
 import ConfigurationComponent from './ConfigurationComponent.react.js';
 import DashboardComponent from './DashboardComponent.react.js';
 

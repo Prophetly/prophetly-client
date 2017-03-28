@@ -22,6 +22,7 @@ class ControlPanelContainer extends Component {
     return (<ControlPanelComponent
             selectedFile={this.state.controlPanel.get('selectedFile')}
             columns={this.state.controlPanel.toJS().columns}
+            columnValues={this.state.controlPanel.toJS().columnValues}
           />)
   }
 }
