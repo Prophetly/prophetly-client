@@ -1,10 +1,14 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import { TabPane } from 'rc-tabs';
+//import createPlotlyComponent from 'react-plotlyjs';
+//const PlotlyComponent = createPlotlyComponent(Plotly);
+
 
 import FileUploadComponent from './FileUpload.react.js';
 import FileListContainer from '../containers/FileListContainer';
 import ControlPanelContainer from '../containers/ControlPanelContainer';
+import PlotlyGraphComponent from './PlotlyGraphComponent.react.js';
 
 // dropdown style
 import '../../node_modules/react-dropdown/style.css';
@@ -28,14 +32,7 @@ class ConfigurationComponent extends React.Component {
           </Col>
           <Col xs={12} sm={12} md={9} style={{'marginTop': '30px'}}>
             <ControlPanelContainer />
-            <Row center="xs">
-              <Col xs={12}>
-                <div className="blankslate blankslate-spacious">
-                  <h3>Your model plots</h3>
-                  <p>Start with a dataset to forecast</p>
-                </div>
-              </Col>
-            </Row>
+            <PlotlyGraphComponent plotId="plot-p" plotData={[{type: 'scatter', x: [1,2], y: [2,4]}]} />
           </Col>
         </Row>
       </Grid>);
