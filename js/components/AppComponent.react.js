@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route, hashHistory } from 'react-router';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import Tabs from 'rc-tabs';
 import TabContent from 'rc-tabs/lib/SwipeableTabContent';
@@ -65,10 +65,10 @@ const AppComponent = React.createClass({
   render() {
     return (
       <Router>
-        <Route exact path='/' component={TabSection}>
+        <div>
+          <Route exact path='/' component={TabSection} />
           <Route path='/file/:filename' component={TabSection}/>
-        </Route>
-        <Route path='*' component={NotFound} />
+        </div>
       </Router>
     );
   },
