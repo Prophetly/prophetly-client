@@ -1,6 +1,7 @@
 'use strict';
 
 import ActionTypes from './AppActionTypes';
+import AsyncActions from '../utils/AsyncActions';
 import Dispatcher from '../dispatcher/AppDispatcher';
 
 const Actions = {
@@ -43,6 +44,22 @@ const Actions = {
     Dispatcher.dispatch({
       type: ActionTypes.UPDATE_COLUMN_VALUE,
       data: {column_id: column_id, column_value: column_value},
+    });
+  },
+
+  prepareForecastData(dsColumnValue, yColumnValue, selectedFile) {
+    Dispatcher.dispatch({
+      type: ActionTypes.PREPARE_FORECAST_DATA,
+    });
+
+    AsyncActions.fetchForecastData(dsColumnValue, yColumnValue, selectedFile);
+  },
+
+  fetchForecastData(data) {
+    console.log('fetchForecastData invoked from AsyncActions', data);
+    Dispatcher.dispatch({
+      type: ActionTypes.FETCH_FORECAST_DATA,
+      data: {plotData: data},
     });
   },
 };

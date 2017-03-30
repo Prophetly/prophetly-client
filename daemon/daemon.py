@@ -2,13 +2,45 @@ import tornado.ioloop
 import tornado.web
 from os import listdir, path
 import json
+import ast
+import time
+from random import random
+
+# use notification center to notify about import exceptions
 import pandas as pd
+import numpy as np
+from fbprophet import Prophet
+import plotly.plotly as py
+import plotly.graph_objs as go
+import plotly.tools as tls
+
+m = Prophet()
 
 UPLOAD_DIR = '/Users/pravj-mac/Projects/prophetly-modules/prophetly-react/uploads'
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
         self.write(path(__dirname))
+
+class DataHandler(tornado.web.RequestHandler):
+    def set_default_headers(self):
+        self.set_header("Access-Control-Allow-Origin", "http://localhost:8080")
+        self.set_header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Cache-Control")
+        self.set_header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS')
+        self.set_header("Access-Control-Allow-Credentials", "true")
+
+    def get(self):
+        df = pd.read_csv(UPLOAD_DIR + '/' + 'manning.csv')
+        df['y'] = np.log(df['y'])
+
+        m.fit(df)
+        future = m.make_future_dataframe(periods=365)
+        forecast = m.predict(future)
+        plot_object = m.plot(forecast)
+        plotly_fig = tls.mpl_to_plotly(plot_object)
+        res = ast.literal_eval(plotly_fig['data'].__str__())
+
+        self.write({'plots': res})
 
 class ColumnHandler(tornado.web.RequestHandler):
     def set_default_headers(self):
@@ -58,6 +90,7 @@ def make_app():
         (r"/", MainHandler),
         (r"/upload", UploadHandler),
         (r"/column/(.+)", ColumnHandler),
+        (r"/data", DataHandler),
     ])
 
 if __name__ == "__main__":

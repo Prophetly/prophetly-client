@@ -28,7 +28,9 @@ class TabSection extends React.Component {
 
   render() {
     return (<div>
-      <h1>Prophetly</h1>
+      <div className="d-block border p-4" style={{'background-color': '#007eff', 'color': '#e6f2ff'}}>
+        <h2>Prophetly</h2>
+      </div>
 
       <Tabs
         defaultActiveKey={defaultTabKey}

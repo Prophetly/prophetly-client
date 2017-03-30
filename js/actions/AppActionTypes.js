@@ -8,6 +8,8 @@ const ActionTypes = {
 
   SET_COLUMNS: 'SET_COLUMNS',
   UPDATE_COLUMN_VALUE: 'UPDATE_COLUMN_VALUE',
+
+  PREPARE_FORECAST_DATA: 'PREPARE_FORECAST_DATA',
 };
 
 export default ActionTypes;

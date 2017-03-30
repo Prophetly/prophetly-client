@@ -7,4 +7,9 @@ import AppComponent from './components/AppComponent.react.js';
 import '../node_modules/rc-tabs/assets/index.css';
 
 
-ReactDOM.render(<AppComponent />, document.getElementById('app-section'));
+document.addEventListener('DOMContentLoaded', () => {
+  ReactDOM.render(
+    <AppComponent />,
+    document.getElementById('app-section')
+  );
+});

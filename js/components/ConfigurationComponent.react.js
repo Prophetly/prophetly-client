@@ -1,13 +1,13 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import { TabPane } from 'rc-tabs';
-//import createPlotlyComponent from 'react-plotlyjs';
-//const PlotlyComponent = createPlotlyComponent(Plotly);
+
+
+import FileListContainer from '../containers/FileListContainer';
+import ControlPanelContainer from '../containers/ControlPanelContainer';
 
 
 import FileUploadComponent from './FileUpload.react.js';
-import FileListContainer from '../containers/FileListContainer';
-import ControlPanelContainer from '../containers/ControlPanelContainer';
 import PlotlyGraphComponent from './PlotlyGraphComponent.react.js';
 
 // dropdown style
@@ -32,7 +32,6 @@ class ConfigurationComponent extends React.Component {
           </Col>
           <Col xs={12} sm={12} md={9} style={{'marginTop': '30px'}}>
             <ControlPanelContainer />
-            <PlotlyGraphComponent plotId="plot-p" plotData={[{type: 'scatter', x: [1,2], y: [2,4]}]} />
           </Col>
         </Row>
       </Grid>);

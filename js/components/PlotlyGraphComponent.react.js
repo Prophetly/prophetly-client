@@ -1,5 +1,4 @@
 /* global Plotly */
-
 import React from 'react';
 
 import AppActions from '../actions/AppActions';
@@ -11,6 +10,7 @@ class PlotlyGraphComponent extends React.Component {
   }
 
   renderPlot() {
+    console.log(this.props.plotData, 'renderPlot');
     Plotly.newPlot(
       this.props.plotId,
       this.props.plotData,

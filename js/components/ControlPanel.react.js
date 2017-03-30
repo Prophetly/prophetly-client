@@ -12,6 +12,14 @@ class ControlPanelComponent extends React.Component {
     super(props);
   }
 
+  actionPrepareForecastData(props) {
+    AppActions.prepareForecastData(
+      props.columnValues['datestamp-column'],
+      props.columnValues['y-column'],
+      props.selectedFile,
+    );
+  }
+
   actionUpdateColumnValue(column_id, column_value) {
     AppActions.updateColumnValue(column_id, column_value);
   }
@@ -54,6 +62,7 @@ class ControlPanelComponent extends React.Component {
 					className="btn btn-block btn-danger btn-outline"
 					id="upload-button"
 					type="button"
+          onClick={() => this.actionPrepareForecastData(this.props)}
 				>
           Forecast
         </button>
