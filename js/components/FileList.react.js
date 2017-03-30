@@ -1,18 +1,14 @@
 'use strict';
 
 import React from 'react';
-import Axios from 'axios';
 
 import AppActions from '../actions/AppActions';
+import AsyncActions from '../utils/AsyncActions';
 
 
 class FileListComponent extends React.Component {
   constructor(props) {
     super(props);
-  }
-
-  actionSetFileList(files) {
-    AppActions.setFileList(files);
   }
 
   actionSetColumns(file, columns) {
@@ -23,27 +19,11 @@ class FileListComponent extends React.Component {
     AppActions.selectFile(file);
 
     // collect columns for the selected file and update the dropdown
-    var _this = this;
-
-    Axios.get('http://localhost:8888/column/' + file)
-      .then(function (response) {
-        _this.actionSetColumns(file, response.data.columns);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    AppActions.getColumnsData(file);
   }
 
   componentDidMount() {
-    var _this = this;
-
-    Axios.get('http://localhost:8888/upload')
-      .then(function (response) {
-        _this.actionSetFileList(response.data.files);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    AppActions.getFileList();
   }
 
   render() {

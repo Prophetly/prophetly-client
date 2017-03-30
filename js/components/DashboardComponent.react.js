@@ -9,13 +9,15 @@ class DashboardComponent extends React.Component {
   }
 
   render() {
-    return (<Grid fluid>
+    return (
+      <Grid fluid>
         <Row>
           <Col xs={12} style={{'marginTop': '30px'}}>
             <GraphViewContainer />
           </Col>
         </Row>
-      </Grid>);
+      </Grid>
+    );
   }
 }
 

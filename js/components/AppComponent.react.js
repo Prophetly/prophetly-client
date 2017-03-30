@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import Tabs from 'rc-tabs';
-import TabContent from 'rc-tabs/lib/SwipeableTabContent';
+import TabContent from 'rc-tabs/lib/TabContent';
 import { TabPane } from 'rc-tabs';
 import ScrollableInkTabBar from 'rc-tabs/lib/ScrollableInkTabBar';
 
@@ -27,25 +27,27 @@ class TabSection extends React.Component {
   }
 
   render() {
-    return (<div>
-      <div className="d-block border p-4" style={{'background-color': '#007eff', 'color': '#e6f2ff'}}>
-        <h2>Prophetly</h2>
-      </div>
+    return (
+      <div>
+        <div className="d-block border p-4" style={{'backgroundColor': '#007eff', 'color': '#e6f2ff'}}>
+          <h2>Prophetly</h2>
+        </div>
 
-      <Tabs
-        defaultActiveKey={defaultTabKey}
-        renderTabBar={() => <ScrollableInkTabBar onTabClick={AppComponent.onTabClick}/>}
-        renderTabContent={() => <TabContent/>}
-        onChange={AppComponent.onChange}
-      >
-        <TabPane tab={`Configuration`} key="1">
-          <ConfigurationComponent />
-        </TabPane>
-        <TabPane tab={`Dashboard`} key="2">
-          <DashboardComponent />
-        </TabPane>
-      </Tabs>
-    </div>)
+        <Tabs
+          defaultActiveKey={defaultTabKey}
+          renderTabBar={() => <ScrollableInkTabBar onTabClick={AppComponent.onTabClick}/>}
+          renderTabContent={() => <TabContent/>}
+          onChange={AppComponent.onChange}
+        >
+          <TabPane tab={`Configuration`} key="1">
+            <ConfigurationComponent />
+          </TabPane>
+          <TabPane tab={`Dashboard`} key="2">
+            <DashboardComponent />
+          </TabPane>
+        </Tabs>
+      </div>
+  );
   }
 }
 
@@ -65,6 +67,8 @@ const AppComponent = React.createClass({
   },
 
   render() {
+    console.log(window.innerHeight + 'px');
+
     return (
       <Router>
         <div>

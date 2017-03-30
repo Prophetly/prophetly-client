@@ -19,9 +19,17 @@ const Actions = {
     }
   },
 
+  getFileList() {
+    Dispatcher.dispatch({
+      type: ActionTypes.GET_FILE_LIST_DATA,
+    });
+
+    AsyncActions.fetchFileList();
+  },
+
   setFileList(files) {
     Dispatcher.dispatch({
-      type: ActionTypes.SET_FILE_LIST,
+      type: ActionTypes.SET_FILE_LIST_DATA,
       data: {files: files},
     });
   },
@@ -33,9 +41,18 @@ const Actions = {
     });
   },
 
-  setColumns(file, columns) {
+  getColumnsData(file) {
     Dispatcher.dispatch({
-      type: ActionTypes.SET_COLUMNS,
+      type: ActionTypes.GET_COLUMNS_DATA,
+      data: {fileName: file},
+    });
+
+    AsyncActions.fetchColumnsData(file);
+  },
+
+  setColumnsData(file, columns) {
+    Dispatcher.dispatch({
+      type: ActionTypes.SET_COLUMNS_DATA,
       data: {fileName: file, columns: columns},
     });
   },
@@ -47,18 +64,17 @@ const Actions = {
     });
   },
 
-  prepareForecastData(dsColumnValue, yColumnValue, selectedFile) {
+  getForecastData(dsColumnValue, yColumnValue, selectedFile) {
     Dispatcher.dispatch({
-      type: ActionTypes.PREPARE_FORECAST_DATA,
+      type: ActionTypes.GET_FORECAST_DATA,
     });
 
     AsyncActions.fetchForecastData(dsColumnValue, yColumnValue, selectedFile);
   },
 
-  fetchForecastData(data) {
-    console.log('fetchForecastData invoked from AsyncActions', data);
+  setForecastData(data) {
     Dispatcher.dispatch({
-      type: ActionTypes.FETCH_FORECAST_DATA,
+      type: ActionTypes.SET_FORECAST_DATA,
       data: {plotData: data},
     });
   },

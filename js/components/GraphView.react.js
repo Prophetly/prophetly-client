@@ -22,10 +22,16 @@ class GraphViewComponent extends React.Component {
       result = (<div>waiting</div>);
     } else {
       result = (
+        <div>
         <PlotlyGraphComponent
           plotId="plot-a"
           plotData={this.props.graphViewData.toJS()}
         />
+        <PlotlyGraphComponent
+          plotId="plot-b"
+          plotData={this.props.graphViewData.toJS()}
+        />
+        </div>
       );
     }
     return (result);

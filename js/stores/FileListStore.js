@@ -21,12 +21,19 @@ class FileListStore extends ReduceStore {
     switch (action.type) {
       case ActionTypes.UPLOAD_FILE_SUCCESS:
         return state.set('files', state.get('files').push(action.data.fileName));
+        break;
 
-      case ActionTypes.SET_FILE_LIST:
+      case ActionTypes.GET_FILE_LIST_DATA:
+        return state;
+        break;
+
+      case ActionTypes.SET_FILE_LIST_DATA:
         return state.set('files', fromJS(action.data.files));
+        break;
 
       case ActionTypes.SELECT_FILE:
         return state.set('selectedFile', action.data.fileName);
+        break;
 
       default:
         return state;

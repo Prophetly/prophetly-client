@@ -9,6 +9,7 @@ import ControlPanelContainer from '../containers/ControlPanelContainer';
 
 import FileUploadComponent from './FileUpload.react.js';
 import PlotlyGraphComponent from './PlotlyGraphComponent.react.js';
+import DataPreviewComponent from './DataPreview.react.js';
 
 // dropdown style
 import '../../node_modules/react-dropdown/style.css';
@@ -32,6 +33,7 @@ class ConfigurationComponent extends React.Component {
           </Col>
           <Col xs={12} sm={12} md={9} style={{'marginTop': '30px'}}>
             <ControlPanelContainer />
+            <DataPreviewComponent />
           </Col>
         </Row>
       </Grid>);
