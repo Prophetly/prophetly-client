@@ -28,7 +28,7 @@ class TabSection extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="overflow-handler full-height">
         <div className="d-block border p-4" style={{'backgroundColor': '#007eff', 'color': '#e6f2ff'}}>
           <h2>Prophetly</h2>
         </div>
@@ -36,8 +36,9 @@ class TabSection extends React.Component {
         <Tabs
           defaultActiveKey={defaultTabKey}
           renderTabBar={() => <ScrollableInkTabBar onTabClick={AppComponent.onTabClick}/>}
-          renderTabContent={() => <TabContent/>}
+          renderTabContent={() => <TabContent />}
           onChange={AppComponent.onChange}
+          className="full-height overflow-handler"
         >
           <TabPane tab={`Configuration`} key="1">
             <ConfigurationComponent />
@@ -67,11 +68,9 @@ const AppComponent = React.createClass({
   },
 
   render() {
-    console.log(window.innerHeight + 'px');
-
     return (
       <Router>
-        <div>
+        <div className="full-height">
           <Route exact path='/' component={TabSection} />
           <Route path='/file/:filename' component={TabSection}/>
         </div>

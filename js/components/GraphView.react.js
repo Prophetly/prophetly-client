@@ -16,21 +16,32 @@ class GraphViewComponent extends React.Component {
   }
 
   render() {
-    console.log('graphView render', this.props.isProcessing);
     var result;
+    
     if (this.props.isProcessing) {
-      result = (<div>waiting</div>);
+      result = (
+        <div className="blankslate blankslate-spacious">
+          <h3>Preparing your forecast</h3>
+          <p>Hold tight, it should not take much time</p>
+        </div>
+      );
+    } else if (this.props.isProcessing === false && this.props.graphViewData.size == 0) {
+      result = (
+        <div className="blankslate blankslate-spacious">
+          <h3>Configure your model</h3>
+          <p>Remember to select the right value</p>
+        </div>
+      );
     } else {
       result = (
         <div>
-        <PlotlyGraphComponent
-          plotId="plot-a"
-          plotData={this.props.graphViewData.toJS()}
-        />
-        <PlotlyGraphComponent
-          plotId="plot-b"
-          plotData={this.props.graphViewData.toJS()}
-        />
+          <div className="flash">
+           Here is your interactive forecast
+          </div>
+          <PlotlyGraphComponent
+            plotId="plot-a"
+            plotData={this.props.graphViewData.toJS()}
+          />
         </div>
       );
     }

@@ -34,6 +34,25 @@ const Actions = {
     });
   },
 
+  getFileData(file) {
+    console.log('dispatch GET_FILE_DATA');
+    Dispatcher.dispatch({
+      type: ActionTypes.GET_FILE_DATA,
+    });
+
+    AsyncActions.fetchFileData(file);
+  },
+
+  setFileData(fileName, fileData) {
+    console.log('dispatch SET_FILE_DATA');
+    console.log(fileName);
+    console.log(fileData);
+    Dispatcher.dispatch({
+      type: ActionTypes.SET_FILE_DATA,
+      data: {fileName: fileName, fileData: fileData},
+    });
+  },
+
   selectFile(file) {
     Dispatcher.dispatch({
       type: ActionTypes.SELECT_FILE,

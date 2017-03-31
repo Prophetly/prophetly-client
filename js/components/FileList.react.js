@@ -11,15 +11,15 @@ class FileListComponent extends React.Component {
     super(props);
   }
 
-  actionSetColumns(file, columns) {
-    AppActions.setColumns(file, columns);
-  }
-
   actionSelectFile(file) {
     AppActions.selectFile(file);
 
     // collect columns for the selected file and update the dropdown
     AppActions.getColumnsData(file);
+
+    // collect the file data
+    console.log('AppActions.getFileData', file);
+    AppActions.getFileData(file);
   }
 
   componentDidMount() {

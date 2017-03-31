@@ -15,6 +15,9 @@ const ActionTypes = {
 
   GET_COLUMNS_DATA: 'GET_COLUMNS_DATA',
   SET_COLUMNS_DATA: 'SET_COLUMNS_DATA',
+
+  GET_FILE_DATA: 'GET_FILE_DATA',
+  SET_FILE_DATA: 'SET_FILE_DATA',
 };
 
 export default ActionTypes;

@@ -16,6 +16,17 @@ const AsyncActions = {
     });
   },
 
+  fetchFileData(file) {
+    console.log('AsyncActions fetchFileData', file);
+    Axios.get('http://localhost:8888/filedata/' + file)
+    .then(function (response) {
+      AppActions.setFileData(file, response.data);
+    })
+    .catch(function (error) {
+      console.log();
+    });
+  },
+
   fetchColumnsData(file) {
     Axios.get('http://localhost:8888/column/' + file)
     .then(function (response) {

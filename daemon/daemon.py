@@ -42,6 +42,27 @@ class DataHandler(tornado.web.RequestHandler):
 
         self.write({'plots': res})
 
+class FileDataHandler(tornado.web.RequestHandler):
+    def set_default_headers(self):
+        self.set_header("Access-Control-Allow-Origin", "http://localhost:8080")
+        self.set_header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Cache-Control")
+        self.set_header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS')
+        self.set_header("Access-Control-Allow-Credentials", "true")
+
+    def get(self, file_param):
+        df = pd.read_csv(UPLOAD_DIR + '/' + file_param)
+
+        cols = df.columns.tolist()
+        res = {'columns': cols, 'rows': []}
+
+        for index, row in df.iterrows():
+            row_dict = {}
+            for col in cols:
+                row_dict[col] = row[col]
+            res['rows'].append(row_dict)
+
+        self.write(res)
+
 class ColumnHandler(tornado.web.RequestHandler):
     def set_default_headers(self):
         self.set_header("Access-Control-Allow-Origin", "http://localhost:8080")
@@ -91,6 +112,7 @@ def make_app():
         (r"/upload", UploadHandler),
         (r"/column/(.+)", ColumnHandler),
         (r"/data", DataHandler),
+        (r"/filedata/(.+)", FileDataHandler),
     ])
 
 if __name__ == "__main__":
