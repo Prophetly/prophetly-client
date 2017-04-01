@@ -14,6 +14,8 @@ import DashboardComponent from './DashboardComponent.react.js';
 // primer-css
 import '../../node_modules/primer-css/build/build.css';
 
+//import '../../node_modules/octicons/build/octicons.min.css';
+
 // key of the default open tab
 const defaultTabKey = '1';
 

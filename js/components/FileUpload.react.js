@@ -39,12 +39,20 @@ class FileUploadComponent extends React.Component {
   }
 
   render() {
-    return <button style={{'marginBottom': '40px'}}
-                   className="btn btn-block"
-                   id="upload-button"
-                   type="button">
-                     Upload
-                  </button>;
+    return (
+      <button
+        style={{'marginBottom': '40px'}}
+        className="btn btn-block"
+        id="upload-button"
+        type="button"
+      >
+        <img
+          src="../../node_modules/octicons/build/svg/repo-push.svg"
+          style={{'position': 'relative', 'top': '3px', 'marginRight': '5px'}}
+        />
+        Upload
+      </button>
+    );
   }
 }
 

@@ -64,6 +64,10 @@ class ControlPanelComponent extends React.Component {
 					type="button"
           onClick={() => this.actionGetForecastData(this.props)}
 				>
+          <img
+            src="../../node_modules/octicons/build/svg/graph.svg"
+            style={{'position': 'relative', 'top': '3px', 'marginRight': '5px'}}
+          />
           Forecast
         </button>
       </Col>

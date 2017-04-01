@@ -7,11 +7,19 @@ import AppActions from '../actions/AppActions';
 import { AutoSizer, Column, Table } from 'react-virtualized';
 import 'react-virtualized/styles.css'; // only needs to be imported once
 
-// Table data as a array of objects
-const list = [];
 
-for (var i = 0; i < 100; i++) {
-  list.push({name: ''+i+'', description: ''+i+''});
+class PreviewPanel extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div className="border p-1">
+        <button className="btn btn-sm right" type="button">Download</button>
+      </div>
+    );
+  }
 }
 
 class DataPreviewComponent extends React.Component {
@@ -35,9 +43,11 @@ class DataPreviewComponent extends React.Component {
 
     if (rowList.length === 0 && rowColumns.length === 0) {
       return (
-        <div className="blankslate blankslate-spacious">
-          <h3>Upload and select a dataset</h3>
-          <p>Watch the preview</p>
+        <div>
+          <div className="blankslate blankslate-spacious">
+            <h3>Upload and select a dataset</h3>
+            <p>Watch the preview</p>
+          </div>
         </div>
       );
     } else {

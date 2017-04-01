@@ -20,13 +20,24 @@ class ConfigurationComponent extends React.Component {
     super(props);
   }
 
+  _updateCheckbox() {
+    //
+  }
+
   render() {
     return (<Grid fluid className="full-height">
         <Row className="full-height">
           <Col xs={12} sm={12} md={3} style={{'marginTop': '30px'}}>
             <Row center="xs">
-              <Col xs={12}>
+              <Col xs={10}>
                 <FileUploadComponent />
+              </Col>
+              <Col xs={2}>
+                <button className="btn btn-danger disabled" type="button">X</button>
+              </Col>
+            </Row>
+            <Row center="xs">
+              <Col xs={12}>
                 <FileListContainer />
               </Col>
             </Row>
@@ -35,6 +46,27 @@ class ConfigurationComponent extends React.Component {
             <Row center="xs">
               <Col xs={12}>
                 <ControlPanelContainer />
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={12}>
+                <div className="clearfix border p-1 bg-blue-light">
+                  <button className="btn btn-sm left mr-3" type="button">
+                    <img
+                      src="../../node_modules/octicons/build/svg/desktop-download.svg"
+                      style={{'position': 'relative', 'top': '3px', 'marginRight': '5px'}}
+                    />
+                    Download
+                  </button>
+                  <label>
+                    <input type="checkbox" disabled="disabled" onChange={this._updateCheckbox}/>
+                    <span className="ml-1">include previous data</span>
+                  </label>
+                </div>
+              </Col>
+            </Row>
+            <Row center="xs">
+              <Col xs={12}>
                 <DataPreviewContainer />
               </Col>
             </Row>
