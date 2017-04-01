@@ -17,7 +17,7 @@ class GraphViewComponent extends React.Component {
 
   render() {
     var result;
-    
+
     if (this.props.isProcessing) {
       result = (
         <div className="blankslate blankslate-spacious">
@@ -29,7 +29,7 @@ class GraphViewComponent extends React.Component {
       result = (
         <div className="blankslate blankslate-spacious">
           <h3>Configure your model</h3>
-          <p>Remember to select the right value</p>
+          <p>Remember to select the right values</p>
         </div>
       );
     } else {
