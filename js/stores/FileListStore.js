@@ -35,6 +35,11 @@ class FileListStore extends ReduceStore {
         return state.set('selectedFile', action.data.fileName);
         break;
 
+      case ActionTypes.DELETE_FILE_SUCCESS:
+        state = state.set('selectedFile', '');
+        return state.set('files', state.get('files').remove(state.get('files').indexOf(action.data.fileName)));
+        break;
+
       default:
         return state;
     }

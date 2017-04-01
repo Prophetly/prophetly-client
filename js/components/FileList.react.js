@@ -1,9 +1,12 @@
 'use strict';
 
 import React from 'react';
+import { Grid, Row, Col } from 'react-flexbox-grid';
 
 import AppActions from '../actions/AppActions';
 import AsyncActions from '../utils/AsyncActions';
+
+import FileUploadComponent from './FileUpload.react.js';
 
 
 class FileListComponent extends React.Component {
@@ -18,8 +21,11 @@ class FileListComponent extends React.Component {
     AppActions.getColumnsData(file);
 
     // collect the file data
-    console.log('AppActions.getFileData', file);
     AppActions.getFileData(file);
+  }
+
+  actionDeleteFile(file) {
+    AppActions.deleteFile(file);
   }
 
   componentDidMount() {
@@ -48,10 +54,29 @@ class FileListComponent extends React.Component {
       ));
     }
 
-    return (<nav className="menu">
-        <span className="menu-heading">Available Datasets</span>
-        {fileList}
-      </nav>);
+    return (
+      <Col xs={12} sm={12} md={3} style={{'marginTop': '30px'}}>
+        <Row center="xs">
+          <Col xs={10}>
+            <FileUploadComponent />
+          </Col>
+          <Col xs={2}>
+            <button
+              className={`btn btn-danger${_selectedFile === '' ? ' disabled' : ''}`}
+              type="button"
+              onClick={() => this.actionDeleteFile(_selectedFile)}>X</button>
+          </Col>
+        </Row>
+        <Row center="xs">
+          <Col xs={12}>
+            <nav className="menu">
+                <span className="menu-heading">Available Datasets</span>
+                {fileList}
+            </nav>
+          </Col>
+        </Row>
+      </Col>
+    );
   }
 }
 

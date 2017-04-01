@@ -31,6 +31,12 @@ class DataPreviewStore extends ReduceStore {
         return state.set('fileColumns', fromJS(action.data.fileData.columns));
         break;
 
+      case ActionTypes.DELETE_FILE_SUCCESS:
+        state = state.set('fileName', '');
+        state = state.set('fileRows', List());
+        return state.set('fileColumns', List());
+        break;
+
       default:
         return state;
     }

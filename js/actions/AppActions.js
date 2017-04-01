@@ -60,6 +60,22 @@ const Actions = {
     });
   },
 
+  deleteFile(file) {
+    Dispatcher.dispatch({
+      type: ActionTypes.DELETE_FILE,
+    });
+
+    AsyncActions.deleteFile(file);
+  },
+
+  deleteFileSuccess(file) {
+    console.log('Dispatcher .. deleteFileSuccess');
+    Dispatcher.dispatch({
+      type: ActionTypes.DELETE_FILE_SUCCESS,
+      data: {fileName: file}
+    });
+  },
+
   getColumnsData(file) {
     Dispatcher.dispatch({
       type: ActionTypes.GET_COLUMNS_DATA,

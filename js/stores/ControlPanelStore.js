@@ -27,11 +27,15 @@ class ControlPanelStore extends ReduceStore {
       case ActionTypes.SET_COLUMNS_DATA:
         state = state.set('selectedFile', action.data.fileName);
         return state.set('columns', action.data.columns);
-        //return state.setIn(['columns', action.data.fileName], action.data.columns);
         break;
 
       case ActionTypes.UPDATE_COLUMN_VALUE:
         return state.setIn(['columnValues', action.data.column_id], action.data.column_value.value);
+        break;
+
+      case ActionTypes.DELETE_FILE_SUCCESS:
+        state = state.set('selectedFile', '');
+        return state.set('columns', List());
         break;
 
       default:

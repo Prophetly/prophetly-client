@@ -1,6 +1,6 @@
 import tornado.ioloop
 import tornado.web
-from os import listdir, path
+from os import listdir, path, remove
 import json
 import ast
 import time
@@ -62,6 +62,14 @@ class FileDataHandler(tornado.web.RequestHandler):
             res['rows'].append(row_dict)
 
         self.write(res)
+
+    def post(self, file_param):
+        try:
+            remove(UPLOAD_DIR + '/' + file_param)
+        except OSError:
+            raise 'delete error'
+
+        self.write({'status': 'OK'})
 
 class ColumnHandler(tornado.web.RequestHandler):
     def set_default_headers(self):

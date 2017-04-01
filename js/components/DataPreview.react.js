@@ -68,6 +68,7 @@ class DataPreviewComponent extends React.Component {
                   <Column
                     label={col}
                     dataKey={col}
+                    key={col}
                     width={100}
                   />
                 ))

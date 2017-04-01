@@ -16,6 +16,16 @@ const AsyncActions = {
     });
   },
 
+  deleteFile(file) {
+    Axios.post('http://localhost:8888/filedata/' + file)
+    .then(function (response) {
+      AppActions.deleteFileSuccess(file);
+    })
+    .catch(function (error) {
+      //AppActions.deleteFileError();
+    })
+  },
+
   fetchFileData(file) {
     console.log('AsyncActions fetchFileData', file);
     Axios.get('http://localhost:8888/filedata/' + file)

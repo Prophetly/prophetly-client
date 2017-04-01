@@ -18,6 +18,10 @@ class FileListContainer extends Component {
     };
   }
 
+  componentDidUpdate() {
+    console.log('componentDidUpdate FileListContainer');
+  }
+
   render() {
     return <FileListComponent files={this.state.fileList.get('files')}
             selectedFile={this.state.fileList.get('selectedFile')} />;

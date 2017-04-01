@@ -27,21 +27,7 @@ class ConfigurationComponent extends React.Component {
   render() {
     return (<Grid fluid className="full-height">
         <Row className="full-height">
-          <Col xs={12} sm={12} md={3} style={{'marginTop': '30px'}}>
-            <Row center="xs">
-              <Col xs={10}>
-                <FileUploadComponent />
-              </Col>
-              <Col xs={2}>
-                <button className="btn btn-danger disabled" type="button">X</button>
-              </Col>
-            </Row>
-            <Row center="xs">
-              <Col xs={12}>
-                <FileListContainer />
-              </Col>
-            </Row>
-          </Col>
+          <FileListContainer />
           <Col xs={12} sm={12} md={9} style={{'marginTop': '30px'}} className="overflow-handler">
             <Row center="xs">
               <Col xs={12}>
