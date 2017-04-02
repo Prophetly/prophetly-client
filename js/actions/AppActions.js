@@ -113,6 +113,22 @@ const Actions = {
       data: {plotData: data},
     });
   },
+
+  showNotification(type, timeout, message) {
+    Dispatcher.dispatch({
+      type: ActionTypes.SHOW_NOTIFICATION,
+      data: {
+        notification: {id: (new Date()).getTime(), type: type, message: message},
+        timeout: timeout,
+      },
+    });
+  },
+
+  hideNotification() {
+    Dispatcher.dispatch({
+      type: ActionTypes.HIDE_NOTIFICATION,
+    });
+  },
 };
 
 export default Actions;

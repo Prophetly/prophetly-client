@@ -19,7 +19,7 @@ class FileListContainer extends Component {
   }
 
   componentDidUpdate() {
-    console.log('componentDidUpdate FileListContainer');
+    //console.log('componentDidUpdate FileListContainer');
   }
 
   render() {

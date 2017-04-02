@@ -47,13 +47,20 @@ const AsyncActions = {
     });
   },
 
-  fetchForecastData(a, b, c) {
-    Axios.get('http://localhost:8888/data')
+  fetchForecastData(dsColumnValue, yColumnValue, selectedFile) {
+    Axios.get('http://localhost:8888/data', {
+      params: {
+        ds: dsColumnValue,
+        y: yColumnValue,
+        file: selectedFile
+      }
+    })
     .then(function(response) {
       AppActions.setForecastData(response.data.plots);
     })
     .catch(function(error) {
-      console.log(error);
+      console.log(error.message);
+      AppActions.showNotification('danger', 3000, error.message);
     });
   },
 };

@@ -19,10 +19,6 @@ m = Prophet()
 UPLOAD_DIR = '/Users/pravj-mac/Projects/prophetly-modules/prophetly-react/uploads'
 
 class MainHandler(tornado.web.RequestHandler):
-    def get(self):
-        self.write(path(__dirname))
-
-class DataHandler(tornado.web.RequestHandler):
     def set_default_headers(self):
         self.set_header("Access-Control-Allow-Origin", "http://localhost:8080")
         self.set_header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Cache-Control")
@@ -30,10 +26,21 @@ class DataHandler(tornado.web.RequestHandler):
         self.set_header("Access-Control-Allow-Credentials", "true")
 
     def get(self):
-        df = pd.read_csv(UPLOAD_DIR + '/' + 'manning.csv')
-        df['y'] = np.log(df['y'])
+        self.write(path(__dirname))
 
-        m.fit(df)
+class DataHandler(MainHandler):
+    def get(self):
+        print self.get_arguments('ds')
+        print self.get_arguments('y')
+        print self.get_arguments('file')
+
+        df = pd.read_csv(UPLOAD_DIR + '/' + self.get_arguments('file')[0])
+        new_df = pd.DataFrame()
+        new_df['ds'] = df[self.get_arguments('ds')[0]]
+        new_df['y'] = df[self.get_arguments('y')[0]]
+        #df['y'] = np.log(df['y'])
+
+        m.fit(new_df)
         future = m.make_future_dataframe(periods=365)
         forecast = m.predict(future)
         plot_object = m.plot(forecast)
@@ -42,13 +49,7 @@ class DataHandler(tornado.web.RequestHandler):
 
         self.write({'plots': res})
 
-class FileDataHandler(tornado.web.RequestHandler):
-    def set_default_headers(self):
-        self.set_header("Access-Control-Allow-Origin", "http://localhost:8080")
-        self.set_header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Cache-Control")
-        self.set_header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS')
-        self.set_header("Access-Control-Allow-Credentials", "true")
-
+class FileDataHandler(MainHandler):
     def get(self, file_param):
         df = pd.read_csv(UPLOAD_DIR + '/' + file_param)
 
@@ -71,13 +72,7 @@ class FileDataHandler(tornado.web.RequestHandler):
 
         self.write({'status': 'OK'})
 
-class ColumnHandler(tornado.web.RequestHandler):
-    def set_default_headers(self):
-        self.set_header("Access-Control-Allow-Origin", "http://localhost:8080")
-        self.set_header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Cache-Control")
-        self.set_header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS')
-        self.set_header("Access-Control-Allow-Credentials", "true")
-
+class ColumnHandler(MainHandler):
     def get(self, file_param):
         df = pd.read_csv(UPLOAD_DIR + '/' + file_param)
         res = {'columns': [{'value': col.encode('utf-8'), 'label': col.encode('utf-8')} for col in df.columns.tolist()]}
@@ -85,13 +80,7 @@ class ColumnHandler(tornado.web.RequestHandler):
         ans = json.loads(json.dumps(res))
         self.write(ans)
 
-class UploadHandler(tornado.web.RequestHandler):
-    def set_default_headers(self):
-        self.set_header("Access-Control-Allow-Origin", "http://localhost:8080")
-        self.set_header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Cache-Control")
-        self.set_header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS')
-        self.set_header("Access-Control-Allow-Credentials", "true")
-
+class UploadHandler(MainHandler):
     def post(self):
         try:
             file_info = self.request.files['file'][0]

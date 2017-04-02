@@ -16,7 +16,7 @@ class GraphViewComponent extends React.Component {
   }
 
   render() {
-    var result;
+    let result;
 
     if (this.props.isProcessing) {
       result = (

@@ -13,11 +13,19 @@ class ControlPanelComponent extends React.Component {
   }
 
   actionGetForecastData(props) {
-    AppActions.getForecastData(
-      props.columnValues['datestamp-column'],
-      props.columnValues['y-column'],
-      props.selectedFile,
-    );
+    console.log('datestamp-column', props.columnValues['datestamp-column']);
+    console.log('y-column', props.columnValues['y-column']);
+    if (props.columnValues['datestamp-column'] === undefined) {
+      //
+    } else if (props.columnValues['y-column'] === undefined) {
+      //
+    } else {
+      AppActions.getForecastData(
+        props.columnValues['datestamp-column'],
+        props.columnValues['y-column'],
+        props.selectedFile,
+      );
+    }
   }
 
   actionUpdateColumnValue(column_id, column_value) {
@@ -63,7 +71,6 @@ class ControlPanelComponent extends React.Component {
               <button
                 style={{'marginBottom': '40px'}}
                 className="btn btn-block btn-danger btn-outline"
-                id="upload-button"
                 type="button"
                 onClick={() => this.actionGetForecastData(this.props)}
               >
@@ -73,6 +80,28 @@ class ControlPanelComponent extends React.Component {
                 />
                 Forecast
               </button>
+            </Col>
+          </Row>
+        </Col>
+        <Col xs={12}>
+          <Row start="xs">
+            <Col xs={3}>
+              <Select
+                name="y-column"
+                options={this.props.columns}
+                placeholder="y column"
+                onChange={onChange("y-column")}
+                value={this.props.columnValues["y-column"]}
+                clearable={false}
+              />
+            </Col>
+            <Col xs={3}>
+            <div className="form-checkbox" style={{'position': 'relative', 'top': '3px'}}>
+              <label>
+                <input type="checkbox" checked="checked" />
+                <span className="highlight">Available for hire</span>
+              </label>
+            </div>
             </Col>
           </Row>
         </Col>

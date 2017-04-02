@@ -6,15 +6,13 @@ import TabContent from 'rc-tabs/lib/TabContent';
 import { TabPane } from 'rc-tabs';
 import ScrollableInkTabBar from 'rc-tabs/lib/ScrollableInkTabBar';
 
-//import { AlertList } from "react-bs-notifier";
-
 import ConfigurationComponent from './ConfigurationComponent.react.js';
 import DashboardComponent from './DashboardComponent.react.js';
 
+import NotificationCenterContainer from '../containers/NotificationCenterContainer';
+
 // primer-css
 import '../../node_modules/primer-css/build/build.css';
-
-//import '../../node_modules/octicons/build/octicons.min.css';
 
 // key of the default open tab
 const defaultTabKey = '1';
@@ -31,6 +29,7 @@ class TabSection extends React.Component {
   render() {
     return (
       <div className="overflow-handler full-height">
+        <NotificationCenterContainer />
         <div className="d-block border p-4" style={{'backgroundColor': '#007eff', 'color': '#e6f2ff'}}>
           <h2>Prophetly</h2>
         </div>
