@@ -47,12 +47,13 @@ const AsyncActions = {
     });
   },
 
-  fetchForecastData(dsColumnValue, yColumnValue, selectedFile) {
+  fetchForecastData(dsColumnValue, yColumnValue, selectedFile, plotComponents) {
     Axios.get('http://localhost:8888/data', {
       params: {
         ds: dsColumnValue,
         y: yColumnValue,
-        file: selectedFile
+        file: selectedFile,
+        plotComponents: plotComponents
       }
     })
     .then(function(response) {

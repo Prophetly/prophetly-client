@@ -99,12 +99,12 @@ const Actions = {
     });
   },
 
-  getForecastData(dsColumnValue, yColumnValue, selectedFile) {
+  getForecastData(dsColumnValue, yColumnValue, selectedFile, plotComponents) {
     Dispatcher.dispatch({
       type: ActionTypes.GET_FORECAST_DATA,
     });
 
-    AsyncActions.fetchForecastData(dsColumnValue, yColumnValue, selectedFile);
+    AsyncActions.fetchForecastData(dsColumnValue, yColumnValue, selectedFile, plotComponents);
   },
 
   setForecastData(data) {

@@ -55,33 +55,38 @@ class DataHandler(MainHandler):
             components_plot_object = prophet.plot_components(forecast)
             components_plotly_fig = tls.mpl_to_plotly(components_plot_object)
 
-            trend_fig_data = [go.Scatter(
-                mode='lines',
-                x=components_plotly_fig['data'][0].x,
-                y=components_plotly_fig['data'][0].y
-            )]
+            if self.get_arguments('plotComponents')[0] == 'true':
+                trend_fig_data = [go.Scatter(
+                    mode='lines',
+                    x=components_plotly_fig['data'][0].x,
+                    y=components_plotly_fig['data'][0].y
+                )]
 
-            weekly_fig_data = [go.Scatter(
-                mode='lines',
-                x=components_plotly_fig['data'][1].x,
-                y=components_plotly_fig['data'][1].y
-            )]
+                weekly_fig_data = [go.Scatter(
+                    mode='lines',
+                    x=components_plotly_fig['data'][1].x,
+                    y=components_plotly_fig['data'][1].y
+                )]
 
-            yearly_fig_data = [go.Scatter(
-                mode='lines',
-                x=components_plotly_fig['data'][2].x,
-                y=components_plotly_fig['data'][2].y
-            )]
+                yearly_fig_data = [go.Scatter(
+                    mode='lines',
+                    x=components_plotly_fig['data'][2].x,
+                    y=components_plotly_fig['data'][2].y
+                )]
 
-            res = {
-                'prediction': ast.literal_eval(prediction_fig_data.__str__()),
-                'trend': ast.literal_eval(trend_fig_data.__str__()),
-                'weekly': ast.literal_eval(weekly_fig_data.__str__()),
-                'yearly': ast.literal_eval(yearly_fig_data.__str__()),
-            }
+                res = {
+                    'prediction': ast.literal_eval(prediction_fig_data.__str__()),
+                    'trend': ast.literal_eval(trend_fig_data.__str__()),
+                    'weekly': ast.literal_eval(weekly_fig_data.__str__()),
+                    'yearly': ast.literal_eval(yearly_fig_data.__str__()),
+                }
+            else:
+                res = {
+                    'prediction': ast.literal_eval(prediction_fig_data.__str__()),
+                }
 
             self.write({'plots': res})
-            
+
         except Exception as e:
             self.clear()
             self.set_status(500)

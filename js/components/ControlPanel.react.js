@@ -24,6 +24,7 @@ class ControlPanelComponent extends React.Component {
         props.columnValues['datestamp-column'],
         props.columnValues['y-column'],
         props.selectedFile,
+        document.getElementById('components-checkbox').checked,
       );
     }
   }
