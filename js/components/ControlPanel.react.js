@@ -20,6 +20,9 @@ class ControlPanelComponent extends React.Component {
     } else if (props.columnValues['datestamp-column'] === props.columnValues['y-column']) {
       AppActions.showNotification('warning', 'Value of datestamp-column and y-column can\'t be same.', 1000);
     } else {
+      // change the tab, behind the scene
+      document.getElementsByClassName('rc-tabs-tab')[1].click();
+
       AppActions.getForecastData(
         props.columnValues['datestamp-column'],
         props.columnValues['y-column'],
