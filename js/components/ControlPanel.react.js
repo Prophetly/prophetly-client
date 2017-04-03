@@ -13,12 +13,12 @@ class ControlPanelComponent extends React.Component {
   }
 
   actionGetForecastData(props) {
-    console.log('datestamp-column', props.columnValues['datestamp-column']);
-    console.log('y-column', props.columnValues['y-column']);
     if (props.columnValues['datestamp-column'] === undefined) {
-      //
+      AppActions.showNotification('danger', 'Please select a value for datestamp-column.', 1000);
     } else if (props.columnValues['y-column'] === undefined) {
-      //
+      AppActions.showNotification('danger', 'Please select a value for y-column.', 1000);
+    } else if (props.columnValues['datestamp-column'] === props.columnValues['y-column']) {
+      AppActions.showNotification('warning', 'Value of datestamp-column and y-column can\'t be same.', 1000);
     } else {
       AppActions.getForecastData(
         props.columnValues['datestamp-column'],
@@ -37,6 +37,10 @@ class ControlPanelComponent extends React.Component {
   _createChangeHandler(name) {
     const onChange = (newValue) => this.actionUpdateColumnValue(name, newValue);
     return onChange;
+  }
+
+  toggleCheckbox() {
+    //
   }
 
   render() {
@@ -67,7 +71,13 @@ class ControlPanelComponent extends React.Component {
                 clearable={false}
               />
             </Col>
-            <Col xs={3} xsOffset={3}>
+            <Col xs={3}>
+              <label className="bg-gray-light p-2">
+                <input id="components-checkbox" type="checkbox" onCheck={this.toggleCheckbox} />
+                <span style={{'marginLeft': '5px'}}>Plot components</span>
+              </label>
+            </Col>
+            <Col xs={3}>
               <button
                 style={{'marginBottom': '40px'}}
                 className="btn btn-block btn-danger btn-outline"
@@ -76,7 +86,7 @@ class ControlPanelComponent extends React.Component {
               >
                 <img
                   src="../../node_modules/octicons/build/svg/graph.svg"
-                  style={{'position': 'relative', 'top': '3px', 'marginRight': '5px'}}
+                  style={{'marginRight': '5px'}}
                 />
                 Forecast
               </button>
@@ -95,14 +105,6 @@ class ControlPanelComponent extends React.Component {
                 clearable={false}
               />
             </Col>
-            <Col xs={3}>
-            <div className="form-checkbox" style={{'position': 'relative', 'top': '3px'}}>
-              <label>
-                <input type="checkbox" checked="checked" />
-                <span className="highlight">Available for hire</span>
-              </label>
-            </div>
-            </Col>
           </Row>
         </Col>
         <Col xs={12}>
@@ -113,14 +115,11 @@ class ControlPanelComponent extends React.Component {
             >
               <img
                 src="../../node_modules/octicons/build/svg/desktop-download.svg"
-                style={{'position': 'relative', 'top': '3px', 'marginRight': '5px'}}
+                style={{'marginRight': '5px'}}
               />
               Download
             </button>
-            <label>
-              <input type="checkbox" disabled="disabled" onChange={this._updateCheckbox}/>
-              <span className="ml-1">include previous data</span>
-            </label>
+            <span className="state state-open ml-1">original data</span>
           </div>
         </Col>
       </Row>

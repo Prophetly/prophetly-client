@@ -14,7 +14,7 @@ class PlotlyGraphComponent extends React.Component {
     Plotly.newPlot(
       this.props.plotId,
       this.props.plotData,
-      {margin: {l:0, t: 0, r:0}}
+      {margin: {l:30, t: 0, r:0}}
     );
   }
 

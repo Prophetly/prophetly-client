@@ -12,7 +12,11 @@ class GraphViewComponent extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log('componentDidUpdate GraphViewComponent');
+    //console.log('componentDidUpdate GraphViewComponent');
+  }
+
+  actionChangeDashboardTab(tabName) {
+    AppActions.changeDashboardTab(tabName);
   }
 
   render() {
@@ -35,12 +39,16 @@ class GraphViewComponent extends React.Component {
     } else {
       result = (
         <div>
-          <div className="flash">
-           Here is your interactive forecast
+          <div className="tabnav">
+            <nav className="tabnav-tabs">
+              {this.props.graphViewData.map(
+                  (value, key) => <a href="#" onClick={() => this.actionChangeDashboardTab(key)} className={`tabnav-tab${this.props.selectedTab === key ? ' selected' : ''}`}>{key}</a>
+              )}
+            </nav>
           </div>
           <PlotlyGraphComponent
-            plotId="plot-a"
-            plotData={this.props.graphViewData.toJS()}
+            plotId={`plot-${this.props.selectedTab}`}
+            plotData={this.props.graphViewData.get(`${this.props.selectedTab}`).toJS()}
           />
         </div>
       );

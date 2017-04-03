@@ -48,7 +48,7 @@ class FileUploadComponent extends React.Component {
       >
         <img
           src="../../node_modules/octicons/build/svg/repo-push.svg"
-          style={{'position': 'relative', 'top': '3px', 'marginRight': '5px'}}
+          style={{'marginRight': '5px'}}
         />
         Upload
       </button>

@@ -110,11 +110,11 @@ const Actions = {
   setForecastData(data) {
     Dispatcher.dispatch({
       type: ActionTypes.SET_FORECAST_DATA,
-      data: {plotData: data},
+      data: {forecastData: data},
     });
   },
 
-  showNotification(type, timeout, message) {
+  showNotification(type, message, timeout) {
     Dispatcher.dispatch({
       type: ActionTypes.SHOW_NOTIFICATION,
       data: {
@@ -127,6 +127,13 @@ const Actions = {
   hideNotification() {
     Dispatcher.dispatch({
       type: ActionTypes.HIDE_NOTIFICATION,
+    });
+  },
+
+  changeDashboardTab(tabName) {
+    Dispatcher.dispatch({
+      type: ActionTypes.CHANGE_DASHBOARD_TAB,
+      data: {tabName: tabName}
     });
   },
 };

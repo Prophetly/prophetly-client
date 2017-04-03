@@ -23,6 +23,7 @@ class GraphViewContainer extends Component {
       <GraphViewComponent
         isProcessing={this.state.graphView.get('isProcessing')}
         graphViewData={this.state.graphView.get('graphViewData')}
+        selectedTab={this.state.graphView.get('selectedTab')}
       />
     );
   }

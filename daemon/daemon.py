@@ -14,7 +14,8 @@ import plotly.plotly as py
 import plotly.graph_objs as go
 import plotly.tools as tls
 
-m = Prophet()
+# global Prophet instance
+prophet = Prophet()
 
 UPLOAD_DIR = '/Users/pravj-mac/Projects/prophetly-modules/prophetly-react/uploads'
 
@@ -30,24 +31,61 @@ class MainHandler(tornado.web.RequestHandler):
 
 class DataHandler(MainHandler):
     def get(self):
-        print self.get_arguments('ds')
-        print self.get_arguments('y')
-        print self.get_arguments('file')
-
+        # read the DataFrame on file system
         df = pd.read_csv(UPLOAD_DIR + '/' + self.get_arguments('file')[0])
+
+        # create a new DataFrame using selected columns
         new_df = pd.DataFrame()
         new_df['ds'] = df[self.get_arguments('ds')[0]]
         new_df['y'] = df[self.get_arguments('y')[0]]
-        #df['y'] = np.log(df['y'])
 
-        m.fit(new_df)
-        future = m.make_future_dataframe(periods=365)
-        forecast = m.predict(future)
-        plot_object = m.plot(forecast)
-        plotly_fig = tls.mpl_to_plotly(plot_object)
-        res = ast.literal_eval(plotly_fig['data'].__str__())
+        try:
+            prophet.fit(new_df)
+            future = prophet.make_future_dataframe(periods=5)
+            forecast = prophet.predict(future)
 
-        self.write({'plots': res})
+            # convert matplotlib figure to plotly
+            plot_object = prophet.plot(forecast)
+            plotly_fig = tls.mpl_to_plotly(plot_object)
+
+            # collect the data points from plotly figure for the prediction
+            prediction_fig_data = plotly_fig['data']
+
+            # component plots (trend, weekly, yearly)
+            components_plot_object = prophet.plot_components(forecast)
+            components_plotly_fig = tls.mpl_to_plotly(components_plot_object)
+
+            trend_fig_data = [go.Scatter(
+                mode='lines',
+                x=components_plotly_fig['data'][0].x,
+                y=components_plotly_fig['data'][0].y
+            )]
+
+            weekly_fig_data = [go.Scatter(
+                mode='lines',
+                x=components_plotly_fig['data'][1].x,
+                y=components_plotly_fig['data'][1].y
+            )]
+
+            yearly_fig_data = [go.Scatter(
+                mode='lines',
+                x=components_plotly_fig['data'][2].x,
+                y=components_plotly_fig['data'][2].y
+            )]
+
+            res = {
+                'prediction': ast.literal_eval(prediction_fig_data.__str__()),
+                'trend': ast.literal_eval(trend_fig_data.__str__()),
+                'weekly': ast.literal_eval(weekly_fig_data.__str__()),
+                'yearly': ast.literal_eval(yearly_fig_data.__str__()),
+            }
+
+            self.write({'plots': res})
+            
+        except Exception as e:
+            self.clear()
+            self.set_status(500)
+            self.finish("{0}: {1}".format(e.__class__.__name__, str(e)))
 
 class FileDataHandler(MainHandler):
     def get(self, file_param):

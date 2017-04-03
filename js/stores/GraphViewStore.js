@@ -13,7 +13,8 @@ class GraphViewStore extends ReduceStore {
   getInitialState() {
     return new Map({
       isProcessing: false,
-      graphViewData: List(),
+      selectedTab: 'prediction',
+      graphViewData: Map({}),
     });
   }
 
@@ -25,8 +26,13 @@ class GraphViewStore extends ReduceStore {
 
       case ActionTypes.SET_FORECAST_DATA:
         state = state.set('isProcessing', false);
-        state = state.set('graphViewData', fromJS(action.data.plotData));
+        state = state.set('selectedTab', 'prediction')
+        state = state.set('graphViewData', fromJS(action.data.forecastData));
         return state;
+        break;
+
+      case ActionTypes.CHANGE_DASHBOARD_TAB:
+        return state.set('selectedTab', action.data.tabName);
         break;
 
       default:

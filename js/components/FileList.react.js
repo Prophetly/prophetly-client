@@ -47,7 +47,7 @@ class FileListComponent extends React.Component {
           className={`menu-item${_selectedFile === file ? ' selected' : ''}`}
           href={`/#/file/${file}`}
           onClick={() => this.actionSelectFile(file)}>
-          <span className="branch-ref css-truncate css-truncate-target">
+          <span className="branch-ref css-truncate css-truncate-target expandable">
             {file}
           </span>
         </a>

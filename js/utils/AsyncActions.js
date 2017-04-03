@@ -59,8 +59,7 @@ const AsyncActions = {
       AppActions.setForecastData(response.data.plots);
     })
     .catch(function(error) {
-      console.log(error.message);
-      AppActions.showNotification('danger', 3000, error.message);
+      AppActions.showNotification('danger', error.response.data, 0);
     });
   },
 };
