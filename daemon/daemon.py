@@ -41,7 +41,7 @@ class DataHandler(MainHandler):
 
         try:
             prophet.fit(new_df)
-            future = prophet.make_future_dataframe(periods=5)
+            future = prophet.make_future_dataframe(periods=int(self.get_arguments('futureDurationValue')[0]))
             forecast = prophet.predict(future)
 
             # convert matplotlib figure to plotly

@@ -25,7 +25,6 @@ class DataPreviewStore extends ReduceStore {
         break;
 
       case ActionTypes.SET_FILE_DATA:
-        console.log('DataPreviewStore', action.data.fileName, action.data.fileData.rows, action.data.fileData.columns);
         state = state.set('fileName', action.data.fileName);
         state = state.set('fileRows', fromJS(action.data.fileData.rows));
         return state.set('fileColumns', fromJS(action.data.fileData.columns));

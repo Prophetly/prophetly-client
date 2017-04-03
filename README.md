@@ -16,7 +16,6 @@
   <a href="https://github.com/Prophetly/Prophetly"><img src="https://img.shields.io/badge/phase-develoment-brightgreen.svg"></a>
 </p>
 
-Prophetly
-=========
+> Interactive Time Series Forecasting using <a href="https://facebookincubator.github.io/prophet">Prophet</a>, <a href="https://github.com/plotly/plotly.js">Plotly</a>, and <a href="https://github.com/facebook/react">React</a>.
 
-Interactive Time Series Forecasting using Prophet, Plotly, and React
+![Prophetly](http://g.recordit.co/SqxPgjqdjv.gif)

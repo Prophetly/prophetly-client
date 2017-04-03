@@ -13,12 +13,16 @@ class ControlPanelComponent extends React.Component {
   }
 
   actionGetForecastData(props) {
+    let futureDurationValue = parseInt(document.getElementById('future-duration').value);
+
     if (props.columnValues['datestamp-column'] === undefined) {
       AppActions.showNotification('danger', 'Please select a value for datestamp-column.', 1000);
     } else if (props.columnValues['y-column'] === undefined) {
       AppActions.showNotification('danger', 'Please select a value for y-column.', 1000);
     } else if (props.columnValues['datestamp-column'] === props.columnValues['y-column']) {
       AppActions.showNotification('warning', 'Value of datestamp-column and y-column can\'t be same.', 1000);
+    } else if (isNaN(futureDurationValue) || futureDurationValue === 0) {
+      AppActions.showNotification('danger', 'Value of future duration should be a positive number.', 1000);
     } else {
       // change the tab, behind the scene
       document.getElementsByClassName('rc-tabs-tab')[1].click();
@@ -28,6 +32,7 @@ class ControlPanelComponent extends React.Component {
         props.columnValues['y-column'],
         props.selectedFile,
         document.getElementById('components-checkbox').checked,
+        futureDurationValue,
       );
     }
   }
@@ -77,7 +82,7 @@ class ControlPanelComponent extends React.Component {
             </Col>
             <Col xs={3}>
               <label className="bg-gray-light p-2">
-                <input id="components-checkbox" type="checkbox" onCheck={this.toggleCheckbox} />
+                <input id="components-checkbox" type="checkbox" />
                 <span style={{'marginLeft': '5px'}}>Plot components</span>
               </label>
             </Col>
@@ -100,13 +105,11 @@ class ControlPanelComponent extends React.Component {
         <Col xs={12}>
           <Row start="xs">
             <Col xs={3}>
-              <Select
-                name="y-column"
-                options={this.props.columns}
-                placeholder="y column"
-                onChange={onChange("y-column")}
-                value={this.props.columnValues["y-column"]}
-                clearable={false}
+              <input
+                id="future-duration"
+                className="form-control input-block mb-3"
+                type="number"
+                placeholder="Forecast duration (in days)"
               />
             </Col>
           </Row>

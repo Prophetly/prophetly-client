@@ -39,8 +39,6 @@ class DataPreviewComponent extends React.Component {
     const rowList = this.props.fileRows.toJS();
     const rowColumns = this.props.fileColumns.toJS();
 
-    console.log(rowList, rowColumns);
-
     if (rowList.length === 0 && rowColumns.length === 0) {
       return (
         <div>

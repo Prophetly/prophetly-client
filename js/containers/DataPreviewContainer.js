@@ -18,12 +18,7 @@ class DataPreviewContainer extends Component {
     };
   }
 
-  componentDidUpdate() {
-    console.log('DataPreviewContainer componentDidUpdate');
-  }
-
   render() {
-    console.log('before render', this.state.dataPreview);
     return (
       <DataPreviewComponent
         fileName={this.state.dataPreview.get('fileName')}

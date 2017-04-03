@@ -27,7 +27,6 @@ const AsyncActions = {
   },
 
   fetchFileData(file) {
-    console.log('AsyncActions fetchFileData', file);
     Axios.get('http://localhost:8888/filedata/' + file)
     .then(function (response) {
       AppActions.setFileData(file, response.data);
@@ -47,13 +46,14 @@ const AsyncActions = {
     });
   },
 
-  fetchForecastData(dsColumnValue, yColumnValue, selectedFile, plotComponents) {
+  fetchForecastData(dsColumnValue, yColumnValue, selectedFile, plotComponents, futureDurationValue) {
     Axios.get('http://localhost:8888/data', {
       params: {
         ds: dsColumnValue,
         y: yColumnValue,
         file: selectedFile,
-        plotComponents: plotComponents
+        plotComponents: plotComponents,
+        futureDurationValue: futureDurationValue,
       }
     })
     .then(function(response) {
