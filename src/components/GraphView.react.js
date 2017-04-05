@@ -1,5 +1,4 @@
 import React from 'react';
-import { Grid, Row, Col } from 'react-flexbox-grid';
 
 import PlotlyGraphComponent from './PlotlyGraphComponent.react.js';
 
@@ -29,7 +28,7 @@ class GraphViewComponent extends React.Component {
           <p>Hold tight, it should not take much time</p>
         </div>
       );
-    } else if (this.props.isProcessing === false && this.props.graphViewData.size == 0) {
+    } else if (this.props.isProcessing === false && this.props.graphViewData.size === 0) {
       result = (
         <div className="blankslate blankslate-spacious">
           <h3>Configure your model</h3>

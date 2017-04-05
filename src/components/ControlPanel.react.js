@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Row, Col } from 'react-flexbox-grid';
+import { Row, Col } from 'react-flexbox-grid';
 import Select from 'react-select';
 
 import AppActions from '../actions/AppActions';
@@ -95,6 +95,7 @@ class ControlPanelComponent extends React.Component {
               >
                 <img
                   src="../../node_modules/octicons/build/svg/graph.svg"
+                  alt=""
                   style={{'marginRight': '5px'}}
                 />
                 Forecast
@@ -123,6 +124,7 @@ class ControlPanelComponent extends React.Component {
               <img
                 src="../../node_modules/octicons/build/svg/desktop-download.svg"
                 style={{'marginRight': '5px'}}
+                alt=""
               />
               Download
             </button>

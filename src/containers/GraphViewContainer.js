@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { Container } from 'flux/utils';
 
 import GraphViewStore from '../stores/GraphViewStore';
-import GraphViewComponent from '../components/graphView.react.js';
+import GraphViewComponent from '../components/GraphView.react.js';
 
 
 class GraphViewContainer extends Component {

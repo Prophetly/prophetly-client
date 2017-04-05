@@ -1,26 +1,9 @@
 'use strict';
 
 import React from 'react';
-
-import AppActions from '../actions/AppActions';
-
 import { AutoSizer, Column, Table } from 'react-virtualized';
 import 'react-virtualized/styles.css'; // only needs to be imported once
 
-
-class PreviewPanel extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <div className="border p-1">
-        <button className="btn btn-sm right" type="button">Download</button>
-      </div>
-    );
-  }
-}
 
 class DataPreviewComponent extends React.Component {
   constructor(props) {

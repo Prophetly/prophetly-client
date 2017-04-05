@@ -1,10 +1,9 @@
 'use strict';
 
 import React from 'react';
-import { Grid, Row, Col } from 'react-flexbox-grid';
+import { Row, Col } from 'react-flexbox-grid';
 
 import AppActions from '../actions/AppActions';
-import AsyncActions from '../utils/AsyncActions';
 
 import FileUploadComponent from './FileUpload.react.js';
 
@@ -37,7 +36,7 @@ class FileListComponent extends React.Component {
     const _files = this.props.files;
     const _selectedFile = this.props.selectedFile;
 
-    if (_files.size == 0) {
+    if (_files.size === 0) {
       fileList = (<span className="menu-item">
             Upload dataset to get started
           </span>)

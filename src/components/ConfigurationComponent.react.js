@@ -12,7 +12,7 @@ import FileUploadComponent from './FileUpload.react.js';
 import PlotlyGraphComponent from './PlotlyGraphComponent.react.js';
 
 // dropdown style
-import '../../node_modules/react-dropdown/style.css';
+//import '../../node_modules/react-dropdown/style.css';
 
 
 class ConfigurationComponent extends React.Component {

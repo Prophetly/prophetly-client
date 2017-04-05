@@ -1,0 +1,27 @@
+html, body {
+    height: 100%;
+    margin:  0px auto;
+    padding: 0px auto;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.rc-tabs-content {
+  height: 100%;
+}
+
+.eight-height {
+  height: 80%;
+}
+
+.overflow-handler {
+  overflow: hidden;
+}
+
+.AutoSizerWrapper {
+  flex: 1 1 auto;
+}
+
+
