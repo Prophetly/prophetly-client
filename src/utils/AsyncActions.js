@@ -3,11 +3,12 @@
 import Axios from 'axios';
 
 import AppActions from '../actions/AppActions';
+import AppConstants from '../constants/AppConstants';
 
 
 const AsyncActions = {
   fetchFileList() {
-    Axios.get('http://localhost:8888/upload')
+    Axios.get(AppConstants.PROPHETLY_SERVER_ADDRESS + '/upload')
     .then(function (response) {
       AppActions.setFileList(response.data.files);
     })
@@ -17,7 +18,7 @@ const AsyncActions = {
   },
 
   deleteFile(file) {
-    Axios.post('http://localhost:8888/filedata/' + file)
+    Axios.post(AppConstants.PROPHETLY_SERVER_ADDRESS + '/filedata/' + file)
     .then(function (response) {
       AppActions.deleteFileSuccess(file);
     })
@@ -27,7 +28,7 @@ const AsyncActions = {
   },
 
   fetchFileData(file) {
-    Axios.get('http://localhost:8888/filedata/' + file)
+    Axios.get(AppConstants.PROPHETLY_SERVER_ADDRESS + '/filedata/' + file)
     .then(function (response) {
       AppActions.setFileData(file, response.data);
     })
@@ -37,7 +38,7 @@ const AsyncActions = {
   },
 
   fetchColumnsData(file) {
-    Axios.get('http://localhost:8888/column/' + file)
+    Axios.get(AppConstants.PROPHETLY_SERVER_ADDRESS + '/column/' + file)
     .then(function (response) {
       AppActions.setColumnsData(file, response.data.columns);
     })
@@ -47,7 +48,7 @@ const AsyncActions = {
   },
 
   fetchForecastData(dsColumnValue, yColumnValue, selectedFile, plotComponents, futureDurationValue) {
-    Axios.get('http://localhost:8888/data', {
+    Axios.get(AppConstants.PROPHETLY_SERVER_ADDRESS + '/data', {
       params: {
         ds: dsColumnValue,
         y: yColumnValue,

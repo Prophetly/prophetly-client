@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import { Alert, AlertList, AlertContainer } from "react-bs-notifier";
+import { AlertList } from "react-bs-notifier";
 
 import AppActions from '../actions/AppActions';
 

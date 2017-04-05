@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Tabs from 'rc-tabs';
 import TabContent from 'rc-tabs/lib/TabContent';
@@ -16,10 +16,6 @@ import '../../node_modules/primer-css/build/build.css';
 
 // key of the default open tab
 const defaultTabKey = '1';
-
-const NotFound = () => (
-  <h2>404</h2>
-);
 
 class TabSection extends React.Component {
   constructor(props) {
@@ -51,7 +47,7 @@ class TabSection extends React.Component {
       </div>
   );
   }
-}
+};
 
 const AppComponent = React.createClass({
   getInitialState() {

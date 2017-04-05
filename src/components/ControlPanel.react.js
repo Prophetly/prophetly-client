@@ -6,6 +6,9 @@ import AppActions from '../actions/AppActions';
 
 import 'react-select/dist/react-select.css';
 
+import downloadSvg from '../assets/svg/desktop-download.svg';
+import graphSvg from '../assets/svg/graph.svg';
+
 
 class ControlPanelComponent extends React.Component {
   constructor(props) {
@@ -94,8 +97,8 @@ class ControlPanelComponent extends React.Component {
                 onClick={() => this.actionGetForecastData(this.props)}
               >
                 <img
-                  src="../../node_modules/octicons/build/svg/graph.svg"
-                  alt=""
+                  src={graphSvg}
+                  alt="Forecast"
                   style={{'marginRight': '5px'}}
                 />
                 Forecast
@@ -122,9 +125,9 @@ class ControlPanelComponent extends React.Component {
               type="button"
             >
               <img
-                src="../../node_modules/octicons/build/svg/desktop-download.svg"
+                src={downloadSvg}
                 style={{'marginRight': '5px'}}
-                alt=""
+                alt="Download"
               />
               Download
             </button>

@@ -3,7 +3,6 @@
 import {ReduceStore} from 'flux/utils';
 import {Map} from 'immutable';
 import {List} from 'immutable';
-const { fromJS } = require('immutable');
 
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import ActionTypes from '../actions/AppActionTypes';

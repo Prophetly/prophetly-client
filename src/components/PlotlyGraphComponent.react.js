@@ -1,8 +1,6 @@
 /* global Plotly */
 import React from 'react';
 
-import AppActions from '../actions/AppActions';
-
 
 class PlotlyGraphComponent extends React.Component {
   constructor(props) {

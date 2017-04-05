@@ -2,8 +2,9 @@ var React = require('react');
 var Dropzone = require('dropzone');
 
 import AppActions from '../actions/AppActions';
+import AppConstants from '../constants/AppConstants';
 
-//import '../../node_modules/octicons/build/octicons.css';
+import uploadSvg from '../assets/svg/repo-push.svg';
 
 
 class FileUploadComponent extends React.Component {
@@ -19,13 +20,13 @@ class FileUploadComponent extends React.Component {
     var _this = this;
 
     // create a new Dropzone instance on the 'upload button'
-    var _dropzone = new Dropzone("button#upload-button", {
-      url: "http://localhost:8888/upload",
+    var _dropzone = new Dropzone('button#upload-button', {
+      url: AppConstants.PROPHETLY_SERVER_ADDRESS + '/upload',
       previewTemplate: '<div style="display:none"></div>',
       acceptedFiles: 'text/csv'
     });
 
-    // upload successful
+    // dataset upload successful
     _dropzone.on('success', function(file) {
       _dropzone.removeFile(file);
 
@@ -47,8 +48,9 @@ class FileUploadComponent extends React.Component {
         type="button"
       >
         <img
-          src="../../node_modules/octicons/build/svg/repo-push.svg"
+          src={uploadSvg}
           style={{'marginRight': '5px'}}
+          alt="Upload"
         />
         Upload
       </button>

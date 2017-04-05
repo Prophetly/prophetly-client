@@ -2,14 +2,10 @@
 
 import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
-import { TabPane } from 'rc-tabs';
 
 import FileListContainer from '../containers/FileListContainer';
 import ControlPanelContainer from '../containers/ControlPanelContainer';
 import DataPreviewContainer from '../containers/DataPreviewContainer';
-
-import FileUploadComponent from './FileUpload.react.js';
-import PlotlyGraphComponent from './PlotlyGraphComponent.react.js';
 
 // dropdown style
 //import '../../node_modules/react-dropdown/style.css';
