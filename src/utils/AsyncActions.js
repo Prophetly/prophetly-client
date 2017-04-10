@@ -21,7 +21,7 @@ const AsyncActions = {
       AppActions.deleteFileSuccess(file);
     })
     .catch(function (error) {
-      //AppActions.deleteFileError();
+      AppActions.showNotification('danger', 'Unable to delete the file ' + file, 1000);
     })
   },
 
