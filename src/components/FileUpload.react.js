@@ -8,9 +8,11 @@ import uploadSvg from '../assets/svg/repo-push.svg';
 
 
 class FileUploadComponent extends React.Component {
+  /* eslint-disable no-useless-constructor */
   constructor(props) {
     super(props);
   }
+  /* eslint-disable no-useless-constructor */
 
   actionUploadFile(fileName, isError) {
     AppActions.uploadFile(fileName, isError);

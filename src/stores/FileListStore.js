@@ -1,5 +1,3 @@
-'use strict';
-
 import {ReduceStore} from 'flux/utils';
 import {Map} from 'immutable';
 import {List} from 'immutable';
@@ -17,6 +15,7 @@ class FileListStore extends ReduceStore {
     });
   }
 
+  /* eslint-disable no-unreachable */
   reduce(state, action) {
     switch (action.type) {
       case ActionTypes.UPLOAD_FILE_SUCCESS:
@@ -44,6 +43,7 @@ class FileListStore extends ReduceStore {
         return state;
     }
   }
+  /* eslint-disable no-unreachable */
 }
 
 export default new FileListStore(AppDispatcher);

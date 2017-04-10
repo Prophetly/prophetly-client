@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 
@@ -7,18 +5,13 @@ import FileListContainer from '../containers/FileListContainer';
 import ControlPanelContainer from '../containers/ControlPanelContainer';
 import DataPreviewContainer from '../containers/DataPreviewContainer';
 
-// dropdown style
-//import '../../node_modules/react-dropdown/style.css';
-
 
 class ConfigurationComponent extends React.Component {
+  /* eslint-disable no-useless-constructor */
   constructor(props) {
     super(props);
   }
-
-  _updateCheckbox() {
-    //
-  }
+  /* eslint-disable no-useless-constructor */
 
   render() {
     return (<Grid fluid className="full-height">

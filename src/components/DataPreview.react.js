@@ -1,14 +1,14 @@
-'use strict';
-
 import React from 'react';
 import { AutoSizer, Column, Table } from 'react-virtualized';
 import 'react-virtualized/styles.css'; // only needs to be imported once
 
 
 class DataPreviewComponent extends React.Component {
+  /* eslint-disable no-useless-constructor */
   constructor(props) {
     super(props);
   }
+  /* eslint-disable no-useless-constructor */
 
   _rowClassName ({ index }) {
     if (index < 0) {

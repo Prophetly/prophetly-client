@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react';
 import { Row, Col } from 'react-flexbox-grid';
 
@@ -9,9 +7,11 @@ import FileUploadComponent from './FileUpload.react.js';
 
 
 class FileListComponent extends React.Component {
+  /* eslint-disable no-useless-constructor */
   constructor(props) {
     super(props);
   }
+  /* eslint-disable no-useless-constructor */
 
   actionSelectFile(file) {
     AppActions.selectFile(file);

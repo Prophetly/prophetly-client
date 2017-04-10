@@ -3,9 +3,11 @@ import React from 'react';
 
 
 class PlotlyGraphComponent extends React.Component {
+  /* eslint-disable no-useless-constructor */
   constructor(props) {
     super(props);
   }
+  /* eslint-disable no-useless-constructor */
 
   renderPlot() {
     Plotly.newPlot(

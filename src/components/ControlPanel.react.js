@@ -11,11 +11,14 @@ import graphSvg from '../assets/svg/graph.svg';
 
 
 class ControlPanelComponent extends React.Component {
+  /* eslint-disable no-useless-constructor */
   constructor(props) {
     super(props);
   }
+  /* eslint-disable no-useless-constructor */
 
   actionGetForecastData(props) {
+    // eslint-disable-next-line
     let futureDurationValue = parseInt(document.getElementById('future-duration').value);
 
     if (props.columnValues['datestamp-column'] === undefined) {

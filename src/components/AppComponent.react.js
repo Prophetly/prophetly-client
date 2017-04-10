@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
@@ -18,9 +19,11 @@ import '../../node_modules/primer-css/build/build.css';
 const defaultTabKey = '1';
 
 class TabSection extends React.Component {
+  /* eslint-disable no-useless-constructor */
   constructor(props) {
     super(props);
   }
+  /* eslint-disable no-useless-constructor */
 
   render() {
     return (

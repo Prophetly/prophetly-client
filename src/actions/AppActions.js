@@ -1,5 +1,3 @@
-'use strict';
-
 import ActionTypes from './AppActionTypes';
 import AsyncActions from '../utils/AsyncActions';
 import Dispatcher from '../dispatcher/AppDispatcher';

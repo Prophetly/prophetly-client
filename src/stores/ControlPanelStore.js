@@ -1,5 +1,3 @@
-'use strict';
-
 import {ReduceStore} from 'flux/utils';
 import {Map} from 'immutable';
 import {List} from 'immutable';
@@ -17,6 +15,7 @@ class ControlPanelStore extends ReduceStore {
     });
   }
 
+  /* eslint-disable no-unreachable */
   reduce(state, action) {
     switch (action.type) {
       case ActionTypes.GET_COLUMNS_DATA:
@@ -41,6 +40,7 @@ class ControlPanelStore extends ReduceStore {
         return state;
     }
   }
+  /* eslint-disable no-unreachable */
 }
 
 export default new ControlPanelStore(AppDispatcher);

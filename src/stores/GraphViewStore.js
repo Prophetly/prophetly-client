@@ -1,5 +1,3 @@
-'use strict';
-
 import {ReduceStore} from 'flux/utils';
 import {Map} from 'immutable';
 const { fromJS } = require('immutable');
@@ -17,6 +15,7 @@ class GraphViewStore extends ReduceStore {
     });
   }
 
+  /* eslint-disable no-unreachable */
   reduce(state, action) {
     switch (action.type) {
       case ActionTypes.GET_FORECAST_DATA:
@@ -38,6 +37,7 @@ class GraphViewStore extends ReduceStore {
         return state;
     }
   }
+  /* eslint-disable no-unreachable */
 }
 
 export default new GraphViewStore(AppDispatcher);

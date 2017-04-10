@@ -1,5 +1,3 @@
-'use strict';
-
 // we change its value based on the development environment
 let prophetlyServerAddress;
 

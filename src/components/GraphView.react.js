@@ -6,9 +6,11 @@ import AppActions from '../actions/AppActions';
 
 
 class GraphViewComponent extends React.Component {
+  /* eslint-disable no-useless-constructor */
   constructor(props) {
     super(props);
   }
+  /* eslint-disable no-useless-constructor */
 
   componentDidUpdate() {
     //console.log('componentDidUpdate GraphViewComponent');
